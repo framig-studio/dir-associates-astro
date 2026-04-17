@@ -1,0 +1,71 @@
+---
+import "@/styles/blog.css";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Handle the image
+---
+
+<Layout
+  title={post.data.title}
+  seo={{
+    title: post.data.title,
+    description: post.data.description,
+    image: post.data.image,
+    publishDate: post.data.publish_date,
+  }}
+>
+  <div class="container mx-auto py-16 mt-20">
+    <article class="max-w-4xl mx-auto flex flex-col">
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.data.title },
+        ]}
+      />
+      <div class="flex flex-col gap-4 mb-8">
+        <h1 class="text-4xl font-semibold">{post.data.title}</h1>
+
+        <span class="text-md text-gray-500">
+          Publish Date: {post.data.publish_date}
+        </span>
+      </div>
+      <div class="prose prose-lg max-w-none flex flex-col gap-5">
+        <Content />
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-gray-200">
+        <div class="flex justify-between items-center">
+          <a href="/blog" class="inline-flex items-center primary-link">
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Kembali ke Blog
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+</Layout>

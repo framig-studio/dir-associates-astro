@@ -1,0 +1,56 @@
+---
+import TextHeader from "@/components/ui/TextHeader.astro";
+
+const data = [
+  {
+    title: "Kepailitan",
+    desc: "Penilaian keuangan, restrukturisasi, negosiasi dengan kreditor, perlindungan hukum, pemantauan aset, pemilihan jenis kebangkrutan, dan pembimbingan selama proses kebangkrutan.",
+  },
+  {
+    title: "PKPU",
+    desc: "Bantuan hukum untuk PKPU (Penundaan Kewajiban Pembayaran Utang) bagi berbagai pihak yang terlibat utang piutang",
+  },
+  {
+    title: "Hukum Properti",
+    desc: "Membantu dalam transaksi jual beli, penyusunan kontrak sewa menyewa, penyelesaian sengketa tanah, dan perizinan properti.",
+  },
+  {
+    title: "Hukum Bisnis",
+    desc: "Penilaian keuangan, restrukturisasi, negosiasi dengan kreditor, perlindungan hukum, pemantauan aset, pemilihan jenis kebangkrutan, dan pembimbingan selama proses kebangkrutan.",
+  },
+  {
+    title: "Perpajakan",
+    desc: "Perencanaan pajak, penghindaran pajak, penyelesaian sengketa perpajakan, pengelolaan kewajiban pajak, dan pemantauan perubahan hukum perpajakan.",
+  },
+  {
+    title: "Hukum Waris",
+    desc: "Penilaian keuangan, restrukturisasi, negosiasi dengan kreditor, perlindungan hukum, pemantauan aset, pemilihan jenis kebangkrutan, dan pembimbingan selama proses kebangkrutan.",
+  },
+];
+---
+
+<div class="w-full bg-gray-100 flex justify-center" id="service">
+  <div class="container flex flex-col items-center gap-10 py-16">
+    <div class="space-y-3">
+      <TextHeader
+        text="Solusi Penyelesaian"
+        boldText="Masalah Hukum yang Efisien"
+      />
+      <div class="text-secondary text-center">
+        Kami menyediakan berbagai layanan hukum untuk membantu Anda
+        menyelesaikan masalah hukum dengan efisien.
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        data.map((item) => (
+          <div class="bg-white p-6 rounded-xl">
+            <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+            <p class="text-secondary">{item.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

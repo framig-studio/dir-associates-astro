@@ -1,0 +1,37 @@
+---
+// Button.astro
+import { cva } from "class-variance-authority";
+import { clsx } from "clsx";
+
+const base = clsx("rounded-full font-medium transition");
+const button = cva(base, {
+  variants: {
+    variant: {
+      primary: "bg-primary text-white",
+      secondary: "bg-secondary",
+      danger: "bg-red-500 text-white",
+      default: "bg-gray-100",
+      outline: "border-2 border-gray-800",
+    },
+    size: {
+      sm: "px-2 py-1 text-sm",
+      md: "px-4 py-2",
+      lg: "px-6 py-3 ",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
+
+const { variant, size, class: className = "", href } = Astro.props;
+---
+
+<a
+  href={href}
+  class={button({ variant, size, class: className })}
+  style="box-sizing: border-box;"
+>
+  <slot />
+</a>

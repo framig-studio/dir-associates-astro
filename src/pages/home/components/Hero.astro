@@ -1,0 +1,96 @@
+---
+import Button from "@/components/ui/Button.astro";
+import heroImage from "@/assets/home-hero.png";
+
+const data = [
+  "Advokat Konsultan Hukum",
+  "Kurator dan Pengurus",
+  "Kuasa Hukum Pajak",
+  "Mediator",
+];
+
+const checklist = [
+  "Professional dan terpercaya",
+  "Jangkauan seluruh indonesia",
+  "Pendampingan penuh",
+];
+---
+
+<div
+  class="container mx-auto flex gap-10 items-center"
+  style="margin-top: 100px; margin-bottom: 56px;"
+>
+  <!-- left side -->
+  <div class="flex flex-col gap-8 max-w-xl">
+    <h1 class="text-5xl font-semibold" style="line-height: 1.2;">
+      <span class="text-primary">Solusi Hukum Terpercaya</span> untuk Perusahaan &
+      Individu
+    </h1>
+
+    <p class="text-secondary" style="font-size: 16px;">
+      Kami membantu Anda menyelesaikan permasalahan hukum dengan pendekatan
+      strategis, terukur, dan berintegritas tinggi.
+    </p>
+
+    <div class="flex flex-col gap-3 mb-5">
+      {
+        checklist.map((c) => {
+          return (
+            <div class="flex gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1.3em"
+                height="1.3em"
+                viewBox="0 0 24 24"
+                class="text-color-secondary"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75s-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12m13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="font-medium">{c}</span>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="space-x-2">
+      <Button variant="primary" size="lg" href="/"
+        >Konsultasi Gratis Sekarang
+      </Button>
+
+      <Button variant="outline" size="lg" href="/">Lihat Layanan</Button>
+    </div>
+  </div>
+
+  <!-- center -->
+  <div>
+    <img src={heroImage.src} alt="Hero" />
+  </div>
+
+  <!-- right side -->
+
+  <div style="max-width: 260px;" class="flex flex-col gap-1">
+    {
+      data.map((d, index) => {
+        const cls = index % 2 === 0 ? "text-color-secondary" : "";
+        return (
+          <div
+            class={`text-4xl ${cls}`}
+            style="font-weight: 500; line-height: 1.3;"
+          >
+            {d}
+          </div>
+        );
+      })
+    }
+
+    <div class="text-secondary" style="font-size: 16px;">
+      Dwi Oktorianto R, SH., M.Kn, CRA., CTL & Tim
+    </div>
+  </div>
+</div>

@@ -1,23 +1,31 @@
+---
+import "@/styles/global.css";
+import TopNavigation from "./TopNavigation.astro";
+import Footer from "./Footer.astro";
+import SEOMetaTags from "@/components/SEOMetaTags.astro";
+
+const {
+  title = "DIR & Associates - Advokat, Kurator & Pengurus, Pengacara Pajak prestisius.",
+  seo,
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" href="/dir-logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {seo && <SEOMetaTags {...seo} />}
+  </head>
+  <body class="pt-20">
+    <TopNavigation />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

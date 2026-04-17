@@ -1,0 +1,30 @@
+---
+export interface Props {
+  data: {
+    title: string;
+    description: string;
+    image?: string;
+    publish_date?: string;
+    slug: string;
+  };
+}
+
+const { data } = Astro.props;
+
+// Fallback to prevent undefined errors
+const cardData = data || {
+  title: "Untitled",
+  description: "No description available",
+  image: "",
+  publish_date: "",
+  slug: "",
+};
+---
+
+<div>
+  <div class="bg-gray-100 rounded-2xl" style="height: 200px;"></div>
+  <div class="py-4">
+    <h3 class="text-lg font-semibold text-gray-900">{cardData.title}</h3>
+    <p class="text-gray-600">{cardData.description}</p>
+  </div>
+</div>

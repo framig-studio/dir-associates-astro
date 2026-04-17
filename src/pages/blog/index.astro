@@ -1,0 +1,53 @@
+---
+import TextHeader from "@/components/ui/TextHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import BlogCard from "./components/BlogCard.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+
+const posts = await getCollection("blog");
+---
+
+<Layout>
+  <div class="w-full flex flex-col items-center justify-center py-10 gap-10">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
+    </div>
+    <div class="container flex flex-col items-center justify-center gap-5">
+      <div class="flex items-center gap-2.5 bg-gray-100 py-2 px-4 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 25"
+          ><path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M11.25 2.75C6.142 2.75 2 6.89 2 11.998s4.142 9.248 9.25 9.248a9.2 9.2 0 0 0 5.987-2.198l3.481 3.48a.75.75 0 1 0 1.06-1.06l-3.48-3.48a9.2 9.2 0 0 0 2.202-5.99c0-5.108-4.142-9.248-9.25-9.248M3.5 11.998a7.75 7.75 0 0 1 7.75-7.748a7.749 7.749 0 1 1 0 15.496a7.75 7.75 0 0 1-7.75-7.748"
+            clip-rule="evenodd"></path></svg
+        >
+        <input
+          type="text"
+          placeholder="Cari artikel disini"
+          class="border-none outline-none py-1"
+          style="width: 420px;"
+        />
+      </div>
+
+      <TextHeader
+        text="Silahkan Membaca"
+        boldText="Artikel Terbaru Dari Kami"
+      />
+    </div>
+
+    <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        posts.map((post) => (
+          <a href={`/blog/${post.data.slug}`}>
+            <BlogCard data={post.data} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

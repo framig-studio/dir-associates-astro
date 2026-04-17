@@ -1,0 +1,59 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  image?: string;
+  publishDate?: string;
+  author?: string;
+  section?: string;
+  type?: string;
+  locale?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = "hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates",
+  image,
+  publishDate,
+  author = "DIR & Associates",
+  section = "Blog",
+  type = "article",
+  locale = "id_ID",
+} = Astro.props;
+
+const currentUrl = Astro.url.href;
+const imageUrl = image ? new URL(image, Astro.url.origin).href : null;
+const publishedTime = publishDate ? new Date(publishDate).toISOString() : null;
+---
+
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={currentUrl} />
+{imageUrl && <meta property="og:image" content={imageUrl} />}
+<meta property="og:site_name" content="DIR & Associates" />
+<meta property="og:locale" content={locale} />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{imageUrl && <meta name="twitter:image" content={imageUrl} />
+
+<!-- Article meta tags (only for article type) -->
+{type === "article" && (
+  <>
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    <meta property="article:author" content={author} />
+    <meta property="article:section" content={section} />
+  </>
+)}
+
+<!-- Canonical URL -->
+<link rel="canonical" href={currentUrl} />

@@ -1,0 +1,127 @@
+---
+import dir_logo from "@/assets/dir-logo.png";
+
+const menus = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Tentang Kami",
+    href: "/#about-us",
+  },
+  {
+    label: "Layanan",
+    href: "/#service",
+  },
+  {
+    label: "Tim Kami",
+    href: "/#team",
+  },
+  {
+    label: "Portofolio",
+    href: "/#portfolio",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+];
+---
+
+<script>
+  // Navigation functionality
+  document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.getElementById("navbar");
+    const navbarInner = document.getElementById("navbar-inner");
+    const navbarLogo = document.getElementById("navbar-logo");
+    const brand = document.getElementById("brand");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // Smooth scroll for hash links
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (href?.includes("#") && window.location.pathname === "/") {
+          e.preventDefault();
+          const targetId = href.substring(href.lastIndexOf("#") + 1);
+          const target = document.getElementById(targetId);
+
+          if (target && navbar) {
+            const offset = navbar.offsetHeight;
+            window.scrollTo({
+              top: target.offsetTop - offset,
+              behavior: "smooth",
+            });
+            history.pushState(null, "", href);
+          }
+        }
+      });
+    });
+
+    // Handle initial hash
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const target = document.getElementById(targetId);
+      if (target && navbar) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: target.offsetTop - navbar.offsetHeight,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  });
+</script>
+
+<nav
+  class="bg-gray-100/80 backdrop-blur-md fixed top-0 w-full z-50 border-0 outline-none"
+  id="navbar"
+>
+  <div class="container mx-auto">
+    <div
+      class="flex items-center justify-between h-20 transition-all duration-300"
+      id="navbar-inner"
+    >
+      <div class="logo flex gap-5 items-center">
+        <img
+          src={dir_logo.src}
+          alt="DIR & ASSOCIATES"
+          id="navbar-logo"
+          class="h-10 transition-all duration-300"
+        />
+        <span
+          id="brand"
+          class="font-semibold text-xl transition-all duration-300"
+          >DIR & ASSOCIATES</span
+        >
+      </div>
+      <div class="menu">
+        <ul class="flex space-x-2 items-center">
+          {
+            menus.map((menu) => (
+              <li>
+                <a
+                  href={menu.href}
+                  class="nav-link px-4 py-2 rounded-full transition-all duration-300 hover:bg-gray-200"
+                  data-target={menu.href}
+                >
+                  {menu.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <a
+          href="/#contact"
+          class="px-4 py-2 rounded-full font-medium border-2 border-black"
+          >Mari Bicara</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>

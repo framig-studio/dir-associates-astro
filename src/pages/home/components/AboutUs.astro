@@ -1,0 +1,46 @@
+---
+import Button from "@/components/ui/Button.astro";
+import aboutUsImage from "@/assets/home-about.png";
+import dir_logo from "@/assets/dir-svg.svg";
+import TextHeader from "@/components/ui/TextHeader.astro";
+---
+
+<div class="w-full py-16 flex justify-center" id="about-us">
+  <div class="container">
+    <TextHeader text="Siapakah" boldText="Kami?" />
+
+    <div class="flex gap-10 justify-between items-center">
+      <div class="flex flex-col gap-5">
+        <div class="space-y-2">
+          <img src={dir_logo.src} alt="DIR & Associates" loading="lazy" />
+          <h3 class="text-xl font-semibold">DIR & Associates</h3>
+          <span class="py-1 px-3 rounded-full" style="background: #0f524416;">
+            Dwi Oktorianto R, SH., M.Kn., CRA., CTL, CM.
+          </span>
+        </div>
+
+        <div class="text-secondary text-lg">
+          Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
+          layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa
+          Hukum Pajak, serta Mediator.
+        </div>
+
+        <div class="text-secondary text-lg">
+          Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
+          memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
+          hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai
+          jembatan keadilan bagi setiap klien, memahami kebutuhan yang beragam,
+          dan siap menjadi mitra hukum yang profesional serta dapat diandalkan.
+        </div>
+
+        <div class="mt-5">
+          <Button variant="primary" size="lg">Konsultasikan Sekarang</Button>
+        </div>
+      </div>
+
+      <div>
+        <img src={aboutUsImage.src} alt="About Us" width="800" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</div>

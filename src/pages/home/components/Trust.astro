@@ -1,0 +1,31 @@
+---
+const data = [
+  {
+    num: "99%",
+    label: "Kepuasan Client",
+  },
+  {
+    num: "100+",
+    label: "Kasus Ditangani",
+  },
+  {
+    num: "9th+",
+    label: "Pengalaman Professional",
+  },
+  {
+    num: "6",
+    label: "Profesional Tim",
+  },
+];
+---
+
+<div class="bg-secondary h-20 flex items-center justify-center gap-20">
+  {
+    data.map((item) => (
+      <div class="flex items-center justify-center gap-2">
+        <div class="text-xl font-semibold">{item.num}</div>
+        <div>{item.label}</div>
+      </div>
+    ))
+  }
+</div>
