@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import TopNavigation from "./TopNavigation.astro";
 import Footer from "./Footer.astro";
 import SEOMetaTags from "@/components/SEOMetaTags.astro";
+import Analytics from "@vercel/analytics/astro";
 
 const {
   title = "DIR & Associates - Advokat, Kurator & Pengurus, Pengacara Pajak prestisius.",
@@ -27,5 +28,6 @@ const {
       <slot />
     </main>
     <Footer />
+    <Analytics />
   </body>
 </html>
