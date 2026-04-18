@@ -1,0 +1,57 @@
+---
+export interface Props {
+  type: "LocalBusiness" | "LegalService" | "Organization";
+  name: string;
+  description: string;
+  url: string;
+  telephone?: string;
+  email?: string;
+  address?: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+    postalCode?: string;
+  };
+  image?: string;
+  openingHours?: string[];
+  priceRange?: string;
+  sameAs?: string[];
+}
+
+const {
+  type = "LegalService",
+  name,
+  description,
+  url,
+  telephone,
+  email,
+  address,
+  image,
+  openingHours,
+  priceRange,
+  sameAs
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": type,
+  name,
+  description,
+  url,
+  ...(telephone && { telephone }),
+  ...(email && { email }),
+  ...(address && {
+    address: {
+      "@type": "PostalAddress",
+      ...address
+    }
+  }),
+  ...(image && { image }),
+  ...(openingHours && { openingHours }),
+  ...(priceRange && { priceRange }),
+  ...(sameAs && { sameAs })
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
