@@ -1,5 +1,6 @@
 ---
-import dir_logo from "@/assets/dir-logo.png";
+import dir_logo_b from "@/assets/dir-logo.png";
+import Button from "@/components/ui/Button.astro";
 
 const menus = [
   {
@@ -39,6 +40,19 @@ const menus = [
     const navLinks = document.querySelectorAll(".nav-link");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
+
+    // Add shadow on scroll
+    const addShadowOnScroll = () => {
+      if (navbar && window.scrollY > 10) {
+        navbar.classList.add("shadow-md");
+      } else if (navbar) {
+        navbar.classList.remove("shadow-md");
+      }
+    };
+
+    // Initial check and scroll event listener
+    addShadowOnScroll();
+    window.addEventListener("scroll", addShadowOnScroll);
 
     // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
@@ -94,7 +108,7 @@ const menus = [
 </script>
 
 <nav
-  class="bg-gray-100/80 backdrop-blur-md fixed top-0 w-full z-50 border-0 outline-none"
+  class="bg-white/80 backdrop-blur-3xl fixed top-0 w-full z-50 outline-none"
   id="navbar"
 >
   <div class="container mx-auto">
@@ -104,8 +118,8 @@ const menus = [
     >
       <div class="logo flex gap-5 items-center">
         <img
-          src={dir_logo.src}
-          alt="DIR & ASSOCIATES"
+          src={dir_logo_b.src}
+          alt="DIR & Associates"
           id="navbar-logo"
           class="h-10 transition-all duration-300"
         />
@@ -137,11 +151,23 @@ const menus = [
 
       <!-- Desktop CTA -->
       <div class="hidden md:block">
-        <a
-          href="/#contact"
-          class="px-4 py-2 rounded-full font-medium border-2 border-black"
-          >Mari Bicara</a
-        >
+        <Button href="/" variant="outline"
+          >Mari Bicara
+          <svg
+            width="8"
+            height="8"
+            viewBox="0 0 8 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.714294 0.714287H6.42858M6.42858 0.714287V6.42857M6.42858 0.714287L0.714294 6.42857"
+              stroke="currentColor"
+              stroke-width="1.42857"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </Button>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -182,12 +208,22 @@ const menus = [
             </a>
           ))
         }
-        <a
-          href="/#contact"
-          class="block px-4 py-3 rounded-full font-medium border-2 border-black text-center mt-4"
-        >
-          Mari Bicara
-        </a>
+        <Button href="/" variant="outline"
+          ><svg
+            width="8"
+            height="8"
+            viewBox="0 0 8 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.714294 0.714287H6.42858M6.42858 0.714287V6.42857M6.42858 0.714287L0.714294 6.42857"
+              stroke="currentColor"
+              stroke-width="1.42857"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </Button>
       </div>
     </div>
   </div>

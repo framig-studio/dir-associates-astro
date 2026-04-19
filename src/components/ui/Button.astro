@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 
 const base = clsx(
-  "rounded-full font-medium transition flex gap-2 items-center justify-center",
+  "rounded-lg font-medium transition flex gap-2 items-center justify-center",
 );
 const button = cva(base, {
   variants: {
@@ -13,7 +13,8 @@ const button = cva(base, {
       secondary: "bg-secondary",
       danger: "bg-red-500 text-white",
       default: "bg-gray-100",
-      outline: "border-2 border-gray-800",
+      outline: "border-1 border-gray-800",
+      black: "bg-gray-900 text-white",
     },
     size: {
       sm: "px-2 py-1 text-sm",
