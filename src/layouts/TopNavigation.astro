@@ -8,16 +8,16 @@ const menus = [
   },
   {
     label: "Tentang Kami",
-    href: "/#about-us",
+    href: "/about-us",
   },
   {
     label: "Layanan",
-    href: "/#service",
+    href: "/service",
   },
-  {
-    label: "Tim Kami",
-    href: "/#team",
-  },
+  // {
+  //   label: "Tim Kami",
+  //   href: "/#team",
+  // },
   {
     label: "Portofolio",
     href: "/#portfolio",
@@ -37,6 +37,24 @@ const menus = [
     const navbarLogo = document.getElementById("navbar-logo");
     const brand = document.getElementById("brand");
     const navLinks = document.querySelectorAll(".nav-link");
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Mobile menu toggle
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("flex");
+      });
+
+      // Close mobile menu when clicking on links
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+        });
+      });
+    }
 
     // Smooth scroll for hash links
     navLinks.forEach((link) => {
@@ -97,7 +115,9 @@ const menus = [
           >DIR & ASSOCIATES</span
         >
       </div>
-      <div class="menu">
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex menu">
         <ul class="flex space-x-2 items-center">
           {
             menus.map((menu) => (
@@ -115,12 +135,59 @@ const menus = [
         </ul>
       </div>
 
-      <div>
+      <!-- Desktop CTA -->
+      <div class="hidden md:block">
         <a
           href="/#contact"
           class="px-4 py-2 rounded-full font-medium border-2 border-black"
           >Mari Bicara</a
         >
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-200 transition-colors"
+        aria-label="Toggle mobile menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden flex-col bg-white border-t border-gray-200 absolute top-full left-0 right-0 shadow-lg"
+    >
+      <div class="container mx-auto py-4 space-y-2">
+        {
+          menus.map((menu) => (
+            <a
+              href={menu.href}
+              class="nav-link block px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100 text-center"
+              data-target={menu.href}
+            >
+              {menu.label}
+            </a>
+          ))
+        }
+        <a
+          href="/#contact"
+          class="block px-4 py-3 rounded-full font-medium border-2 border-black text-center mt-4"
+        >
+          Mari Bicara
+        </a>
       </div>
     </div>
   </div>

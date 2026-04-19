@@ -3,7 +3,9 @@
 import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 
-const base = clsx("rounded-full font-medium transition");
+const base = clsx(
+  "rounded-full font-medium transition flex gap-2 items-center justify-center",
+);
 const button = cva(base, {
   variants: {
     variant: {

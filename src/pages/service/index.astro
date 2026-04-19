@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/components/ui/Button.astro";
+import Services from "@/pages/service/Services.astro";
+import TextHeader from "@/components/ui/TextHeader.astro";
+
+const seo = {
+  title: "Layanan",
+  description:
+    "DIR & Associates adalah firma hukum terpercaya di Surabaya yang menyediakan layanan advokat, kurator & pengurus, pengacara pajak, dan mediator untuk perusahaan dan individu di seluruh Indonesia.",
+  keywords:
+    "advokat surabaya, kurator dan pengurus, pengacara pajak, firma hukum, layanan hukum, mediator, PKPU, DIR & Associates, Dwi Oktorianto",
+  type: "website",
+  image: "/dir-logo.png",
+};
+---
+
+<Layout title={seo.title} seo={seo}>
+  <div class="container flex flex-col items-center mx-auto my-20 gap-20">
+    <section
+      id="hero"
+      class="flex flex-col items-center gap-12 w-full justify-between pt-10"
+    >
+      <div class="flex flex-col gap-5 lg:max-w-4xl">
+        <h1 class="text-4xl font-medium text-center">
+          Solusi Penyelesaian Masalah Hukum yang Efisien
+        </h1>
+        <p class="text-secondary text-center text-lg">
+          Kami menyediakan berbagai layanan hukum untuk membantu Anda
+          menyelesaikan masalah hukum dengan efisien.
+        </p>
+      </div>
+      <div>
+        <Button href="/contact" variant="primary" size="lg">
+          Konsultasi Gratis Sekarang
+        </Button>
+      </div>
+    </section>
+    <Services />
+
+    <section id="rates" class="flex gap-4 justify-center text-lg">
+      <div>
+        Semua client kami megatakan <strong>Sangat Bagus & Terbaik</strong>
+      </div>
+      <span>|</span>
+      <div>
+        <div class="flex gap-1">
+          {
+            [...Array(5)].map(() => (
+              <svg
+                width="19"
+                height="18"
+                viewBox="0 0 19 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.26186 0.7496C8.77776 -0.249867 10.2222 -0.249866 10.7381 0.7496L12.651 4.45546C12.853 4.84675 13.232 5.119 13.6709 5.188L17.8268 5.84149C18.9477 6.01773 19.3941 7.37595 18.5921 8.16989L15.6183 11.1137C15.3043 11.4246 15.1595 11.8651 15.2288 12.299L15.8844 16.4087C16.0612 17.5171 14.8926 18.3566 13.8811 17.8478L10.1303 15.9613C9.73424 15.7621 9.26576 15.7621 8.86972 15.9613L5.11895 17.8478C4.10736 18.3566 2.93876 17.5171 3.11559 16.4087L3.77123 12.299C3.84046 11.8651 3.69569 11.4246 3.3817 11.1137L0.407945 8.16989C-0.394074 7.37595 0.0522941 6.01773 1.17316 5.84149L5.32915 5.188C5.76797 5.119 6.14698 4.84675 6.34896 4.45546L8.26186 0.7496Z"
+                  fill="#FFBB00"
+                />
+              </svg>
+            ))
+          }
+        </div>
+      </div>
+
+      <span>5.0 dari 5 berdasarkan 48 ulasan</span>
+    </section>
+  </div>
+</Layout>

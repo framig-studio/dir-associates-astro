@@ -9,23 +9,33 @@ import TextHeader from "@/components/ui/TextHeader.astro";
   <div class="container">
     <TextHeader text="Siapakah" boldText="Kami?" />
 
-    <div class="flex gap-10 justify-between items-center">
-      <div class="flex flex-col gap-5">
+    <div
+      class="flex flex-col lg:flex-row gap-8 lg:gap-10 justify-between items-center"
+    >
+      <div class="flex flex-col gap-5 flex-1">
         <div class="space-y-2">
-          <img src={dir_logo.src} alt="DIR & Associates" loading="lazy" />
-          <h3 class="text-xl font-semibold">DIR & Associates</h3>
-          <span class="py-1 px-3 rounded-full" style="background: #0f524416;">
+          <img
+            src={dir_logo.src}
+            alt="DIR & Associates"
+            loading="lazy"
+            class="w-auto h-8 sm:h-10"
+          />
+          <h3 class="text-lg sm:text-xl font-semibold">DIR & Associates</h3>
+          <span
+            class="py-1 px-3 rounded-full text-sm sm:text-base"
+            style="background: #0f524416;"
+          >
             Dwi Oktorianto R, SH., M.Kn., CRA., CTL, CM.
           </span>
         </div>
 
-        <div class="text-secondary text-lg">
+        <div class="text-secondary text-sm sm:text-base lg:text-lg">
           Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
           layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa
           Hukum Pajak, serta Mediator.
         </div>
 
-        <div class="text-secondary text-lg">
+        <div class="text-secondary text-sm sm:text-base lg:text-lg">
           Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
           memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
           hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai
@@ -38,8 +48,13 @@ import TextHeader from "@/components/ui/TextHeader.astro";
         </div>
       </div>
 
-      <div>
-        <img src={aboutUsImage.src} alt="About Us" width="800" loading="lazy" />
+      <div class="flex-1 flex justify-center lg:justify-end">
+        <img
+          src={aboutUsImage.src}
+          alt="About Us"
+          class="w-full max-w-md lg:max-w-lg h-auto"
+          loading="lazy"
+        />
       </div>
     </div>
   </div>
