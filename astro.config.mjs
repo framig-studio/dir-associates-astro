@@ -2,11 +2,12 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 import icon from "astro-icon";
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()],
-  site: 'https://your-domain.vercel.app',
+  integrations: [icon(), sitemap()],
+  site: 'https://dirassociates.com',
   vite: {
     plugins: [tailwindcss()],
     resolve: {
