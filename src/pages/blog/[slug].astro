@@ -15,6 +15,43 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+// Calculate reading time (200 words per minute)
+const content = post.body || "";
+const wordCount = content.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+// Generate structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  image: post.data.image,
+  datePublished: post.data.publish_date,
+  dateModified: post.data.publish_date,
+  author: {
+    "@type": "Organization",
+    name: "DIR & Associates",
+    url: "https://dir-associates.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DIR & Associates",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://dir-associates.com/dir-logo.png",
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://dir-associates.com/blog/${post.data.slug}`,
+  },
+  articleSection: "Hukum",
+  keywords: `${post.data.title}, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
+  wordCount: wordCount,
+  timeRequired: `PT${readingTime}M`,
+};
+
 // Handle the image
 ---
 
@@ -25,8 +62,17 @@ const { Content } = await render(post);
     description: post.data.description,
     image: post.data.image,
     publishDate: post.data.publish_date,
+    keywords: `${post.data.title}, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
+    author: "DIR & Associates",
+    section: "Blog",
+    type: "article",
+    locale: "id_ID",
   }}
 >
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+  />
   <div class="container mx-auto py-16 mt-20">
     <article class="max-w-4xl mx-auto flex flex-col">
       <Breadcrumb
@@ -39,9 +85,13 @@ const { Content } = await render(post);
       <div class="flex flex-col gap-4 mb-8">
         <h1 class="text-4xl font-semibold">{post.data.title}</h1>
 
-        <span class="text-md text-gray-500">
-          Publish Date: {post.data.publish_date}
-        </span>
+        <div class="flex items-center gap-4 text-md text-gray-500">
+          <span>Publish Date: {post.data.publish_date}</span>
+          <span>·</span>
+          <span>Reading Time: {readingTime} min</span>
+          <span>·</span>
+          <span>{wordCount} words</span>
+        </div>
       </div>
       <div class="prose prose-lg max-w-none flex flex-col gap-5">
         <Content />
