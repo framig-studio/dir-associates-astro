@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import about_us_hero from "@/assets/about-us-hero.png";
 import about_us_vision from "@/assets/about-us-vision.jpg";
 import about_us_mission from "@/assets/about-us-mission.jpg";
 import Button from "@/components/ui/Button.astro";
+import Team from "./team.astro";
 
 const seo = {
   title: "Tentang Kami",
@@ -36,60 +36,65 @@ const data = [
 ---
 
 <Layout title={seo.title} seo={seo}>
-  <div class="container flex flex-col items-center mx-auto my-20 gap-20">
-    <section id="hero" class="flex items-center gap-12 w-full justify-between">
-      <div class="flex flex-col gap-8 max-w-xl">
-        <h1 class="text-4xl font-medium">Mengenal Lebih Jauh Tentang Kami</h1>
+  <div
+    class="container flex flex-col items-center mx-auto my-20 gap-20"
+    style="margin-top: 100px;"
+  >
+    <section id="hero" class="flex items-center gap-12 w-full justify-center">
+      <div class="flex flex-col gap-8 max-w-4xl">
+        <h1 class="text-5xl font-medium text-center">
+          Mengenal Lebih Jauh Tentang Kami
+        </h1>
 
-        <p class="text-base text-secondary">
+        <p class="text-lg text-secondary text-center">
           Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
           layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa
           Hukum Pajak, serta Mediator.
         </p>
 
-        <div class="flex items-center gap-4">
-          <Button href="/contact" variant="primary" size="lg">
+        <div class="flex justify-center gap-4">
+          <Button whatsapp="+62 822-918-789" variant="primary" size="lg">
             Hubungi Kami
           </Button>
         </div>
       </div>
-
-      <img src={about_us_hero.src} alt="About Us" class="h-auto rounded-2xl" />
     </section>
 
-    <section id="nest" class="max-w-4xl mx-auto">
-      <p class="text-center text-2xl">
-        “Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen memberikan
-        pelayanan hukum berkualitas, menjunjung nilai dan etika hukum, serta
-        patuh terhadap peraturan yang berlaku. Kami hadir sebagai jembatan
-        keadilan bagi setiap klien, memahami kebutuhan yang beragam, dan siap
-        menjadi mitra hukum yang profesional serta dapat diandalkan.”
-      </p>
-    </section>
+    <div class="flex flex-col gap-10">
+      <section id="nest" class="container p-10 bg-gray-100 rounded-xl">
+        <p class="text-center text-xl">
+          “Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
+          memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
+          hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai
+          jembatan keadilan bagi setiap klien, memahami kebutuhan yang beragam,
+          dan siap menjadi mitra hukum yang profesional serta dapat diandalkan.”
+        </p>
+      </section>
 
-    <section id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full">
-      {
-        data.map((item) => (
-          <div class="flex flex-col items-center gap-2 p-5 bg-gray-100 rounded-xl">
-            <span class="text-4xl font-bold">{item.num}</span>
-            <span class="text-base text-secondary">{item.label}</span>
-          </div>
-        ))
-      }
-    </section>
+      <section id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full">
+        {
+          data.map((item) => (
+            <div class="flex flex-col items-center gap-2 p-5 bg-gray-100 rounded-xl">
+              <span class="text-4xl font-bold">{item.num}</span>
+              <span class="text-base text-secondary">{item.label}</span>
+            </div>
+          ))
+        }
+      </section>
+    </div>
 
     <section
       id="vision-mission"
-      class="max-w-6xl mx-auto flex flex-col gap-16 my-16"
+      class="max-w-6xl mx-auto flex flex-col gap-12 md:gap-16 my-16"
     >
-      <div class="flex items-center gap-16">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
         <img
           src={about_us_vision.src}
           alt="Vision & Mission"
-          class="w-full h-auto rounded-2xl"
+          class="w-full md:w-1/2 h-auto rounded-2xl"
         />
-        <div class="flex flex-col gap-5">
-          <h3 class="text-4xl font-medium">Visi Kami</h3>
+        <div class="flex flex-col gap-5 w-full md:w-1/2">
+          <h3 class="text-3xl md:text-4xl font-medium">Visi Kami</h3>
           <p class="text-secondary text-base/relaxed">
             Menjadi mitra yang terpercaya dan terkemuka dalam memberikan layanan
             hukum yang berkualitas dan inovatif, serta berkontribusi positif
@@ -98,9 +103,16 @@ const data = [
         </div>
       </div>
 
-      <div class="flex items-center gap-16">
-        <div class="flex flex-col gap-5">
-          <h3 class="text-4xl font-medium">Misi Kami</h3>
+      <div
+        class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16"
+      >
+        <img
+          src={about_us_mission.src}
+          alt="Vision & Mission"
+          class="w-full md:w-1/2 h-auto rounded-2xl"
+        />
+        <div class="flex flex-col gap-5 w-full md:w-1/2">
+          <h3 class="text-3xl md:text-4xl font-medium">Misi Kami</h3>
           <p class="text-secondary text-base/relaxed">
             <strong>Memberikan pelayanan hukum</strong> yang profesional dan berkualitas
             tinggi kepada klien kami, dengan memperhatikan nilai-nilai etika dan integritas
@@ -120,13 +132,9 @@ const data = [
             kepada klien.
           </p>
         </div>
-
-        <img
-          src={about_us_mission.src}
-          alt="Vision & Mission"
-          class="w-full h-auto rounded-2xl"
-        />
       </div>
     </section>
+
+    <Team />
   </div>
 </Layout>

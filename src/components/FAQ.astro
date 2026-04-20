@@ -1,0 +1,144 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqData: FAQItem[] = [
+  {
+    question: "Apa saja layanan hukum yang tersedia di DIR & Associates?",
+    answer:
+      "Kami menyediakan berbagai layanan hukum termasuk Advokat dan Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, Mediator, Penyelesaian sengketa bisnis, Hukum Properti, Hukum Perusahaan, Hukum Waris, Hukum Perdata, dan Hukum Pidana.",
+  },
+  {
+    question: "Bagaimana cara memulai konsultasi hukum?",
+    answer:
+      "Anda dapat memulai konsultasi dengan menghubungi kami melalui telepon di +62 822-918-789, email di dirlaw82@gmail.com, atau datang langsung ke kantor kami di Surabaya atau Jakarta untuk konsultasi tatap muka.",
+  },
+  {
+    question: "Berapa biaya untuk konsultasi hukum?",
+    answer:
+      "Biaya konsultasi bervariasi tergantung pada jenis kasus dan kompleksitasnya. Kami menawarkan konsultasi gratis untuk kasus awal, dan akan memberikan informasi biaya yang transparan setelah analisis kasus Anda.",
+  },
+  {
+    question: "Apakah DIR & Associates melayani kasus di seluruh Indonesia?",
+    answer:
+      "Ya, kami melayani kasus di seluruh wilayah Indonesia. Dengan dukungan tim hukum yang berpengalaman dan jaringan yang luas, kami siap membantu Anda di manapun lokasi Anda berada.",
+  },
+  {
+    question: "Apa saja dokumen yang diperlukan untuk konsultasi?",
+    answer:
+      "Untuk konsultasi awal, siapkan identitas diri (KTP/Paspor), dokumen terkait kasus (kontrak, surat perjanjian, akta), dan bukti pendukung jika ada. Semakin lengkap dokumen, semakin baik analisis yang dapat kami berikan.",
+  },
+  {
+    question: "Bagaimana proses penanganan kasus di DIR & Associates?",
+    answer:
+      "Proses kami dimulai dari analisis kasus, penyiapan dokumen hukum, negosiasi dengan pihak terkait, mediasi jika diperlukan, hingga proses peradilan jika tidak mencapai kesepakatan. Kami akan memberikan update berkala sepanjang proses berlangsung.",
+  },
+];
+
+let openIndex = 0;
+---
+
+<section class="w-full py-16">
+  <div class="container mx-auto">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-semibold mb-4">
+          Pertanyaan yang Sering Diajukan
+        </h2>
+        <p class="text-secondary text-base">
+          Temukan jawaban untuk pertanyaan umum seputar layanan hukum kami
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {
+          faqData.map((item, index) => (
+            <div class="bg-gray-100 rounded-2xl">
+              <button
+                class="faq-toggle w-full text-left p-6 flex justify-between items-center cursor-pointer"
+                data-index={index}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span class="font-medium text-base lg:text-lg pr-4">
+                  {item.question}
+                </span>
+                <svg
+                  class={`w-5 h-5 transition-transform duration-200 ${
+                    openIndex === index ? "rotate-180" : ""
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div
+                id={`faq-answer-${index}`}
+                class={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index ? "max-h-96" : "max-h-0"
+                }`}
+                aria-hidden={openIndex !== index}
+              >
+                <div class="p-6 pt-0 text-secondary text-base lg:text-lg leading-relaxed">
+                  {item.answer}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let openIndex = -1;
+
+  function toggleFAQ(index: number) {
+    openIndex = openIndex === index ? -1 : index;
+
+    // Update all FAQ items
+    const buttons = document.querySelectorAll('[aria-controls^="faq-answer-"]');
+    const answers = document.querySelectorAll('[id^="faq-answer-"]');
+
+    buttons.forEach((btn, i) => {
+      const isOpen = i === openIndex;
+      btn.setAttribute("aria-expanded", isOpen.toString());
+
+      const answer = answers[i] as HTMLElement;
+      if (answer) {
+        if (isOpen) {
+          answer.style.maxHeight = "24rem";
+        } else {
+          answer.style.maxHeight = "0";
+        }
+      }
+    });
+  }
+
+  // Add event listener when DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqContainer = document.querySelector(".space-y-4");
+    if (faqContainer) {
+      faqContainer.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        const button = target.closest(".faq-toggle") as HTMLElement;
+        if (button) {
+          const index = parseInt(button.dataset.index || "0");
+          toggleFAQ(index);
+        }
+      });
+    }
+  });
+</script>

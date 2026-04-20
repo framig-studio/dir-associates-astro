@@ -28,11 +28,19 @@ const button = cva(base, {
   },
 });
 
-const { variant, size, class: className = "", href } = Astro.props;
+const { variant, size, class: className = "", href, whatsapp } = Astro.props;
+
+// Create WhatsApp URL if whatsapp prop is provided
+const getWhatsAppUrl = (phone: string) => {
+  const cleanPhone = phone.replace(/\D/g, "");
+  return `https://wa.me/${cleanPhone}`;
+};
+
+const finalHref = whatsapp ? getWhatsAppUrl(whatsapp) : href;
 ---
 
 <a
-  href={href}
+  href={finalHref}
   class={button({ variant, size, class: className })}
   style="box-sizing: border-box;"
 >

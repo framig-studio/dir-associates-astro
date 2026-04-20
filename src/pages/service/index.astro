@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/ui/Button.astro";
 import Services from "@/pages/service/Services.astro";
+import FAQ from "@/components/FAQ.astro";
 
 const seo = {
   title: "Layanan",
@@ -30,12 +31,14 @@ const seo = {
         </p>
       </div>
       <div>
-        <Button href="/contact" variant="primary" size="lg">
+        <Button whatsapp="+62 822-918-789" variant="primary" size="lg">
           Konsultasi Gratis Sekarang
         </Button>
       </div>
     </section>
     <Services />
+
+    <FAQ />
 
     <section id="rates" class="flex gap-4 justify-center text-lg">
       <div>

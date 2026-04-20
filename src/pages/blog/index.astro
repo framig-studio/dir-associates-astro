@@ -9,12 +9,13 @@ const posts = await getCollection("blog");
 ---
 
 <Layout>
-  <div class="w-full flex flex-col items-center justify-center py-10 gap-10">
-    <div class="container">
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
-    </div>
-    <div class="container flex flex-col items-center justify-center gap-5">
-      <div class="flex items-center gap-2.5 bg-gray-100 py-2 px-4 rounded-full">
+  <div
+    class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16"
+  >
+    <div class="container flex flex-col items-center justify-center gap-8">
+      <div
+        class="flex items-center gap-3 bg-gray-100 py-1 px-2 sm:px-6 rounded-full max-w-md w-full mx-4 sm:mx-0"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -28,9 +29,9 @@ const posts = await getCollection("blog");
         >
         <input
           type="text"
+          id="search-input"
           placeholder="Cari artikel disini"
-          class="border-none outline-none py-1"
-          style="width: 420px;"
+          class="border-none outline-none py-3 bg-transparent flex-1 min-w-0"
         />
       </div>
 
@@ -40,14 +41,57 @@ const posts = await getCollection("blog");
       />
     </div>
 
-    <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {
-        posts.map((post) => (
-          <a href={`/blog/${post.data.slug}`}>
-            <BlogCard data={post.data} />
-          </a>
-        ))
-      }
+    <div
+      id="blog-grid"
+      class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      {posts.map((post) => <BlogCard data={post.data} />)}
+    </div>
+
+    <div id="no-results" class="container hidden">
+      <p class="text-center text-gray-500 py-8">
+        Tidak ada artikel yang ditemukan.
+      </p>
     </div>
   </div>
 </Layout>
+
+<script>
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const blogGrid = document.getElementById("blog-grid");
+  const noResults = document.getElementById("no-results");
+
+  if (searchInput && blogGrid && noResults) {
+    const allCards = blogGrid.children;
+
+    searchInput.addEventListener("input", (e) => {
+      const target = e.target as HTMLInputElement;
+      const searchTerm = target.value.toLowerCase();
+      let hasResults = false;
+
+      Array.from(allCards).forEach((card) => {
+        const cardElement = card as HTMLElement;
+        const titleElement = card.querySelector("h2");
+        if (titleElement) {
+          const title = titleElement.textContent?.toLowerCase() || "";
+          if (title.includes(searchTerm)) {
+            cardElement.style.display = "";
+            hasResults = true;
+          } else {
+            cardElement.style.display = "none";
+          }
+        }
+      });
+
+      if (hasResults) {
+        blogGrid.classList.remove("hidden");
+        noResults.classList.add("hidden");
+      } else {
+        blogGrid.classList.add("hidden");
+        noResults.classList.remove("hidden");
+      }
+    });
+  }
+</script>

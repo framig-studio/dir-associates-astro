@@ -19,7 +19,7 @@ const data = [
 ];
 ---
 
-<div
+<section
   style="background: #FAF8F3;"
   class="py-8 lg:py-5 flex items-center justify-center"
 >
@@ -28,9 +28,9 @@ const data = [
       data.map((item) => (
         <div class="flex flex-col lg:flex-row items-center justify-center gap-2 text-center lg:text-left">
           <div class="text-2xl sm:text-xl font-semibold">{item.num}</div>
-          <div class="text-sm sm:text-base">{item.label}</div>
+          <div class="text-base">{item.label}</div>
         </div>
       ))
     }
   </div>
-</div>
+</section>

@@ -21,10 +21,41 @@ const cardData = data || {
 };
 ---
 
-<div>
-  <div class="bg-gray-100 rounded-2xl" style="height: 200px;"></div>
-  <div class="py-4">
-    <h3 class="text-lg font-semibold text-gray-900">{cardData.title}</h3>
-    <p class="text-gray-600">{cardData.description}</p>
+<div class="h-full flex flex-col space-y-5">
+  <a href={`/blog/${cardData.slug}`} class="block">
+    <div class="bg-gray-100 rounded-2xl" style="height: 200px;"></div>
+  </a>
+
+  <a href={`/blog/${cardData.slug}`} class="block">
+    <h2
+      class="text-2xl font-semibold text-gray-900 hover:text-primary transition-colors"
+    >
+      {cardData.title}
+    </h2>
+  </a>
+
+  <div class="flex justify-between gap-8 mt-auto">
+    <span>
+      {
+        cardData.publish_date && (
+          <p class="text-gray-500">
+            {new Date(cardData.publish_date).toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+        )
+      }
+    </span>
+
+    <div>
+      <a
+        href={`/blog/${cardData.slug}`}
+        class="text-primary hover:text-primary-dark font-medium"
+      >
+        Baca Selengkapnya
+      </a>
+    </div>
   </div>
 </div>

@@ -5,7 +5,7 @@ import dir_logo from "@/assets/dir-svg.svg";
 import TextHeader from "@/components/ui/TextHeader.astro";
 ---
 
-<div class="w-full py-16 flex justify-center" id="about-us">
+<section id="about-us" class="w-full pt-16 flex justify-center" id="about-us">
   <div class="container">
     <TextHeader text="Siapakah" boldText="Kami?" />
 
@@ -18,24 +18,24 @@ import TextHeader from "@/components/ui/TextHeader.astro";
             src={dir_logo.src}
             alt="DIR & Associates"
             loading="lazy"
-            class="w-auto h-8 sm:h-10"
+            class="w-auto h-20"
           />
           <h3 class="text-lg sm:text-xl font-semibold">DIR & Associates</h3>
           <span
-            class="py-1 px-3 rounded-full text-sm sm:text-base"
+            class="py-1 px-3 rounded-full text-base"
             style="background: #0f524416;"
           >
             Dwi Oktorianto R, SH., M.Kn., CRA., CTL, CM.
           </span>
         </div>
 
-        <div class="text-secondary text-sm sm:text-base lg:text-lg">
+        <div class="text-secondary text-base lg:text-lg">
           Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
           layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa
           Hukum Pajak, serta Mediator.
         </div>
 
-        <div class="text-secondary text-sm sm:text-base lg:text-lg">
+        <div class="text-secondary text-base lg:text-lg">
           Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
           memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
           hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai
@@ -44,18 +44,30 @@ import TextHeader from "@/components/ui/TextHeader.astro";
         </div>
 
         <div class="mt-5">
-          <Button variant="primary" size="lg">Konsultasikan Sekarang</Button>
+          <Button variant="primary" size="lg" href="/"
+            >Konsultasikan Sekarang</Button
+          >
         </div>
       </div>
 
-      <div class="flex-1 flex justify-center lg:justify-end">
+      <div class="flex-1 flex justify-center lg:justify-end relative mb-7.5">
         <img
           src={aboutUsImage.src}
           alt="About Us"
           class="w-full max-w-md lg:max-w-lg h-auto"
           loading="lazy"
         />
+        <div
+          class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-100/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 shadow-lg w-fit"
+        >
+          <div class="text-left">
+            <h4 class="font-semibold text-lg lg:text-xl">
+              Dwi Oktorianto R, S.H., M.Kn., CRA., CTL., CM
+            </h4>
+            <p class="text-secondary text-sm lg:text-base">Managing Partner</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

@@ -17,21 +17,21 @@ const checklist = [
 ];
 ---
 
-<div
-  class="container mx-auto flex flex-col lg:flex-row gap-8 lg:gap-10 items-center"
+<section
+  class="w-full flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:container mx-auto"
   style="margin-top: 100px; margin-bottom: 56px;"
 >
   <!-- left side -->
-  <div class="flex flex-col gap-6 lg:gap-8 max-w-xl flex-1">
+  <div class="flex flex-col gap-6 lg:gap-8 max-w-xl flex-1 px-4 lg:px-0">
     <h1
-      class="text-6xl sm:text-4xl lg:text-5xl font-semibold"
+      class="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
       style="line-height: 1.2;"
     >
       Solusi <span class="text-primary underline">Hukum Terpercaya</span> untuk Perusahaan
       & Individu
     </h1>
 
-    <p class="text-secondary text-sm sm:text-base lg:text-lg">
+    <p class="text-secondary text-base lg:text-lg">
       Kami membantu Anda menyelesaikan permasalahan hukum dengan pendekatan
       strategis, terukur, dan berintegritas tinggi.
     </p>
@@ -55,7 +55,7 @@ const checklist = [
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="font-medium text-sm sm:text-base">{c}</span>
+              <span class="font-medium text-base">{c}</span>
             </div>
           );
         })
@@ -63,11 +63,11 @@ const checklist = [
     </div>
 
     <div class="flex flex-col sm:flex-row gap-2 sm:space-x-2">
-      <Button variant="primary" size="lg" href="/"
+      <Button variant="primary" size="lg" whatsapp="+62 822-918-789"
         >Konsultasi Gratis Sekarang
       </Button>
 
-      <Button variant="outline" size="lg" href="/">Lihat Layanan</Button>
+      <Button variant="outline" size="lg" href="/service">Lihat Layanan</Button>
     </div>
 
     <div>
@@ -81,14 +81,14 @@ const checklist = [
   </div>
 
   <!-- right side - services list -->
-  <div class="flex-1 lg:max-w-xs">
-    <div class="flex flex-col gap-1">
+  <div class="flex-1 lg:max-w-xs px-4 lg:px-0">
+    <div class="flex flex-col gap-1 items-center lg:items-end">
       {
         data.map((d, index) => {
           const cls = index % 2 === 0 ? "text-color-secondary" : "";
           return (
             <div
-              class={`text-2xl text-right lg:text-4xl ${cls}`}
+              class={`text-2xl text-left lg:text-right lg:text-4xl ${cls}`}
               style="font-weight: 500; line-height: 1.3;"
             >
               {d}
@@ -97,9 +97,9 @@ const checklist = [
         })
       }
 
-      <div class="text-secondary text-sm sm:text-base lg:text-lg mt-2">
+      <div class="text-secondary text-base lg:text-lg mt-2">
         Dwi Oktorianto R, SH., M.Kn, CRA., CTL & Tim
       </div>
     </div>
   </div>
-</div>
+</section>
