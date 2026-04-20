@@ -2,7 +2,7 @@
 import TextHeader from "@/components/ui/TextHeader.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import BlogCard from "./components/BlogCard.astro";
+import BlogCard from "@/components/BlogCard.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 
 const posts = await getCollection("blog");
