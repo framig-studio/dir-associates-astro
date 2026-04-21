@@ -34,9 +34,6 @@ const menus = [
   // Navigation functionality
   document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.getElementById("navbar");
-    const navbarInner = document.getElementById("navbar-inner");
-    const navbarLogo = document.getElementById("navbar-logo");
-    const brand = document.getElementById("brand");
     const navLinks = document.querySelectorAll(".nav-link");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -139,7 +136,7 @@ const menus = [
                 <li>
                   <a
                     href={menu.href}
-                    class="nav-link px-4 py-2 rounded-full transition-all duration-300 hover:bg-gray-200"
+                    class="nav-link px-4 py-2 font-medium rounded-md transition-all duration-300 hover:bg-gray-100"
                     data-target={menu.href}
                   >
                     {menu.label}
