@@ -15,7 +15,7 @@ const {
   title,
   description,
   keywords = "hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates",
-  image,
+  image = "/og-thumb.jpg",
   publishDate,
   author = "DIR & Associates",
   section = "Blog",
@@ -44,16 +44,20 @@ const publishedTime = publishDate ? new Date(publishDate).toISOString() : null;
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{imageUrl && <meta name="twitter:image" content={imageUrl} />
+{imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
 <!-- Article meta tags (only for article type) -->
-{type === "article" && (
-  <>
-    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
-    <meta property="article:author" content={author} />
-    <meta property="article:section" content={section} />
-  </>
-)}
+{
+  type === "article" && (
+    <>
+      {publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      <meta property="article:author" content={author} />
+      <meta property="article:section" content={section} />
+    </>
+  )
+}
 
 <!-- Canonical URL -->
 <link rel="canonical" href={currentUrl} />
