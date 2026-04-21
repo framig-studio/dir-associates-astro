@@ -5,7 +5,7 @@ export const service = [
   },
   {
     title: "PKPU",
-    desc: "Bantuan hukum untuk PKPU (Penundaan Kewajiban Pembayaran Utang) bagi berbagai pihak yang terlibat utang piutang",
+    desc: "Bantuan hukum untuk PKPU (Penundaan Kewajiban Pembayaran Utang) bagi berbagai pihak yang terlibat utang piutang.",
   },
   {
     title: "Hukum Properti",
