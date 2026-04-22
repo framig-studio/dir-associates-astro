@@ -8,7 +8,7 @@ const sliders = [
   },
 
   {
-    header: "Spesialis Pengacara Kepailitan & PKPU dan Bidang Hukum Lainnya",
+    header: "Spesialis Pengacara Kepailitan & PKPU Serta Bidang Hukum Lainnya",
     sub_header:
       "Berpengalaman menangani restrukturisasi utang, PKPU, hingga perkara pailit perusahaan dengan pendekatan strategis.",
     cta: "Jelajahi  Layanan",
