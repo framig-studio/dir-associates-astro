@@ -25,7 +25,7 @@ export const service = [
   },
   {
     title: "Hukum Waris",
-    desc: "Gugatan pembagian harta warisan, gugatan perbuatan melawan hukum (penguasaan harta secara sepihak), gugatan pengembalian aset warisan, permohonan sita jaminan atas harta warisan.",
+    desc: "Sengketa antar ahli waris terkait pembagian harta, gugatan pembagian harta warisan, adanya perbuatan melawan hukum terkait penguasaan harta secara sepihak, gugatan pengembalian aset warisan, permohonan sita jaminan atas harta warisan.",
   },
   {
     title: "Perdata",
