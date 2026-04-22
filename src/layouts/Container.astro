@@ -1,7 +1,7 @@
 ---
-const { class: className } = Astro.props;
+const { class: className, style } = Astro.props;
 ---
 
-<div class={`container flex flex-col gap-10 ${className || ""}`}>
+<div class={`container mx-auto py-6 ${className || ""}`} style={style}>
   <slot />
 </div>

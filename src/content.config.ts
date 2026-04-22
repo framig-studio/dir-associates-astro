@@ -16,6 +16,12 @@ const blog = defineCollection({
     slug: z.string(),
     publish_date: z.string(),
     image: z.string(),
+    nextArticle: z
+      .object({
+        title: z.string(),
+        slug: z.string(),
+      })
+      .optional(),
   }),
 });
 

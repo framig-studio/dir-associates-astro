@@ -1,0 +1,12 @@
+---
+export interface Props {
+  class?: string;
+  children: any;
+}
+
+const { class: className = "", children, ...attributes } = Astro.props;
+---
+
+<div class={`container mx-auto py-6 ${className}`} {...attributes}>
+  {children}
+</div>

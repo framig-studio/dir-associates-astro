@@ -1,0 +1,40 @@
+---
+import TextHeader from "@/components/ui/TextHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import PortfolioCard from "@/components/PortfolioCard.astro";
+
+// Gallery path variable
+const galleryPath = "/src/assets/gallery";
+
+// Portfolio data - using gallery assets
+const portfolioItems = [
+  `${galleryPath}/gallery-1.jpg`,
+  `${galleryPath}/gallery-2.jpg`,
+  `${galleryPath}/gallery-3.jpg`,
+  `${galleryPath}/gallery-4.jpg`,
+  `${galleryPath}/gallery-5.jpg`,
+  `${galleryPath}/gallery-6.jpg`,
+  `${galleryPath}/gallery-7.jpg`,
+  `${galleryPath}/gallery-8.jpg`,
+];
+---
+
+<Layout>
+  <div
+    class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16 mb-20"
+  >
+    <div class="container flex flex-col items-center justify-center gap-8">
+      <TextHeader
+        text="Lihat Portfolio"
+        boldText="Proyek-Proyek Unggulan Kami"
+      />
+    </div>
+
+    <div
+      id="portfolio-grid"
+      class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      {portfolioItems.map((image) => <PortfolioCard image={image} />)}
+    </div>
+  </div>
+</Layout>
