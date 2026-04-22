@@ -25,7 +25,7 @@ export const service = [
   },
   {
     title: "Hukum Waris",
-    desc: "Penilaian keuangan, restrukturisasi, negosiasi dengan kreditor, perlindungan hukum, pemantauan aset, pemilihan jenis kebangkrutan, dan pembimbingan selama proses kebangkrutan.",
+    desc: "Gugatan pembagian harta warisan, gugatan perbuatan melawan hukum (penguasaan harta secara sepihak), gugatan pengembalian aset warisan, permohonan sita jaminan atas harta warisan.",
   },
   {
     title: "Perdata",
