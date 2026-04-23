@@ -46,7 +46,7 @@ export const serviceData = {
     },
     {
       title: "Pidana",
-      desc: "Penipuan, penggelapan, perzinahan, pencemaran nama baik, pemalsuan surat, kekerasan dalam rumah tangga, kasus narkotika, serta kasus pidana lainnya",
+      desc: "Penipuan, penggelapan, perzinahan, pencemaran nama baik, pemalsuan surat, kekerasan dalam rumah tangga, kasus narkotika, serta kasus pidana lainnya.",
     },
   ],
 };

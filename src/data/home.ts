@@ -47,7 +47,7 @@ export const homeData = {
     stats: [
       { num: "99%", label: "Kepuasan Client" },
       { num: "100+", label: "Kasus Ditangani" },
-      { num: "9th+", label: "Pengalaman Professional" },
+      { num: "9th+", label: "Pengalaman Profesional" },
       { num: "6", label: "Profesional Tim" },
     ] as TrustStat[],
   },
@@ -87,7 +87,7 @@ export const homeData = {
       boldText: "Tim Professional Dari Kami",
     } as Header,
     description:
-      "Layanan kami 24/7 hanya untuk membantu memberikan solusi untuk anda",
+      "Layanan kami 24/7 hanya untuk membantu memberikan solusi untuk anda.",
     cta: {
       text: "Hubungi Kami",
       href: waUrl,

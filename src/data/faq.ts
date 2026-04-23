@@ -3,7 +3,7 @@ import type { FAQItem } from "@/types";
 export const faqData = {
   header: "Pertanyaan yang Sering Diajukan",
   description:
-    "Temukan jawaban untuk pertanyaan umum seputar layanan hukum kami",
+    "Temukan jawaban untuk pertanyaan umum seputar layanan hukum kami.",
   items: [
     {
       question: "Apa saja layanan hukum yang tersedia di DIR & Associates?",
