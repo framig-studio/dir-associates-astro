@@ -36,8 +36,6 @@ const faqData: FAQItem[] = [
       "Proses kami dimulai dari analisis kasus, penyiapan dokumen hukum, negosiasi dengan pihak terkait, mediasi jika diperlukan, hingga proses peradilan jika tidak mencapai kesepakatan. Kami akan memberikan update berkala sepanjang proses berlangsung.",
   },
 ];
-
-let openIndex = -1;
 ---
 
 <section class="w-full py-16 bg-gray-100 pb-24">
@@ -59,16 +57,14 @@ let openIndex = -1;
               <button
                 class="faq-toggle w-full text-left p-6 flex justify-between items-center cursor-pointer"
                 data-index={index}
-                aria-expanded={openIndex === index}
+                aria-expanded="false"
                 aria-controls={`faq-answer-${index}`}
               >
                 <span class="font-medium text-base lg:text-lg pr-4">
                   {item.question}
                 </span>
                 <svg
-                  class={`w-5 h-5 transition-transform duration-200 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  class="w-5 h-5 transition-transform duration-200 faq-icon"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -85,10 +81,8 @@ let openIndex = -1;
 
               <div
                 id={`faq-answer-${index}`}
-                class={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
-                }`}
-                aria-hidden={openIndex !== index}
+                class="overflow-hidden transition-all duration-300 max-h-0"
+                aria-hidden="true"
               >
                 <div class="p-6 pt-0 text-secondary text-base lg:text-lg leading-relaxed">
                   {item.answer}
@@ -106,39 +100,57 @@ let openIndex = -1;
   let openIndex = -1;
 
   function toggleFAQ(index: number) {
-    openIndex = openIndex === index ? -1 : index;
+    const button = document.querySelector(
+      `[data-index="${index}"]`,
+    ) as HTMLElement;
+    const answer = document.getElementById(
+      `faq-answer-${index}`,
+    ) as HTMLElement;
+    const icon = button?.querySelector(".faq-icon") as HTMLElement;
 
-    // Update all FAQ items
-    const buttons = document.querySelectorAll('[aria-controls^="faq-answer-"]');
-    const answers = document.querySelectorAll('[id^="faq-answer-"]');
+    // Close previously opened item
+    if (openIndex !== -1 && openIndex !== index) {
+      const prevButton = document.querySelector(
+        `[data-index="${openIndex}"]`,
+      ) as HTMLElement;
+      const prevAnswer = document.getElementById(
+        `faq-answer-${openIndex}`,
+      ) as HTMLElement;
+      const prevIcon = prevButton?.querySelector(".faq-icon") as HTMLElement;
 
-    buttons.forEach((btn, i) => {
-      const isOpen = i === openIndex;
-      btn.setAttribute("aria-expanded", isOpen.toString());
+      if (prevButton) prevButton.setAttribute("aria-expanded", "false");
+      if (prevAnswer) prevAnswer.style.maxHeight = "0";
+      if (prevIcon) prevIcon.classList.remove("rotate-180");
+      if (prevAnswer) prevAnswer.setAttribute("aria-hidden", "true");
+    }
 
-      const answer = answers[i] as HTMLElement;
-      if (answer) {
-        if (isOpen) {
-          answer.style.maxHeight = "24rem";
-        } else {
-          answer.style.maxHeight = "0";
-        }
-      }
-    });
+    // Toggle current item
+    if (openIndex === index) {
+      // Close current item
+      if (button) button.setAttribute("aria-expanded", "false");
+      if (answer) answer.style.maxHeight = "0";
+      if (icon) icon.classList.remove("rotate-180");
+      if (answer) answer.setAttribute("aria-hidden", "true");
+      openIndex = -1;
+    } else {
+      // Open current item
+      if (button) button.setAttribute("aria-expanded", "true");
+      if (answer) answer.style.maxHeight = "24rem";
+      if (icon) icon.classList.add("rotate-180");
+      if (answer) answer.setAttribute("aria-hidden", "false");
+      openIndex = index;
+    }
   }
 
-  // Add event listener when DOM is ready
+  // Add event listeners
   document.addEventListener("DOMContentLoaded", () => {
-    const faqContainer = document.querySelector(".space-y-4");
-    if (faqContainer) {
-      faqContainer.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
-        const button = target.closest(".faq-toggle") as HTMLElement;
-        if (button) {
-          const index = parseInt(button.dataset.index || "0");
-          toggleFAQ(index);
-        }
+    const buttons = document.querySelectorAll(".faq-toggle");
+    buttons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const index = parseInt((button as HTMLElement).dataset.index || "0");
+        toggleFAQ(index);
       });
-    }
+    });
   });
 </script>
