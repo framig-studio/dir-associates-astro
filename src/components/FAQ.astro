@@ -1,41 +1,5 @@
 ---
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqData: FAQItem[] = [
-  {
-    question: "Apa saja layanan hukum yang tersedia di DIR & Associates?",
-    answer:
-      "Kami menyediakan berbagai layanan hukum termasuk Advokat dan Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, Mediator, Penyelesaian sengketa bisnis, Hukum Properti, Hukum Perusahaan, Hukum Waris, Hukum Perdata, dan Hukum Pidana.",
-  },
-  {
-    question: "Bagaimana cara memulai konsultasi hukum?",
-    answer:
-      "Anda dapat memulai konsultasi dengan menghubungi kami melalui telepon di +62 822-918-789, email di dirlaw82@gmail.com, atau datang langsung ke kantor kami di Surabaya atau Jakarta untuk konsultasi tatap muka.",
-  },
-  {
-    question: "Berapa biaya untuk konsultasi hukum?",
-    answer:
-      "Biaya konsultasi bervariasi tergantung pada jenis kasus dan kompleksitasnya. Kami menawarkan konsultasi gratis untuk kasus awal, dan akan memberikan informasi biaya yang transparan setelah analisis kasus Anda.",
-  },
-  {
-    question: "Apakah DIR & Associates melayani kasus di seluruh Indonesia?",
-    answer:
-      "Ya, kami melayani kasus di seluruh wilayah Indonesia. Dengan dukungan tim hukum yang berpengalaman dan jaringan yang luas, kami siap membantu Anda di manapun lokasi Anda berada.",
-  },
-  {
-    question: "Apa saja dokumen yang diperlukan untuk konsultasi?",
-    answer:
-      "Untuk konsultasi awal, siapkan identitas diri (KTP/Paspor), dokumen terkait kasus (kontrak, surat perjanjian, akta), dan bukti pendukung jika ada. Semakin lengkap dokumen, semakin baik analisis yang dapat kami berikan.",
-  },
-  {
-    question: "Bagaimana proses penanganan kasus di DIR & Associates?",
-    answer:
-      "Proses kami dimulai dari analisis kasus, penyiapan dokumen hukum, negosiasi dengan pihak terkait, mediasi jika diperlukan, hingga proses peradilan jika tidak mencapai kesepakatan. Kami akan memberikan update berkala sepanjang proses berlangsung.",
-  },
-];
+import { faqData } from "@/data/faq.ts";
 ---
 
 <section class="w-full py-16 bg-gray-100 pb-24">
@@ -43,16 +7,16 @@ const faqData: FAQItem[] = [
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl lg:text-4xl font-semibold mb-4">
-          Pertanyaan yang Sering Diajukan
+          {faqData.header}
         </h2>
         <p class="text-secondary text-base">
-          Temukan jawaban untuk pertanyaan umum seputar layanan hukum kami
+          {faqData.description}
         </p>
       </div>
 
       <div class="space-y-4">
         {
-          faqData.map((item, index) => (
+          faqData.items.map((item, index: number) => (
             <div class="bg-white rounded-2xl border border-gray-200">
               <button
                 class="faq-toggle w-full text-left p-6 flex justify-between items-center cursor-pointer"

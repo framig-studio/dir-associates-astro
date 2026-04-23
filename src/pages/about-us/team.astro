@@ -1,40 +1,18 @@
 ---
-import okto from "@/assets/about-us/okto.png";
-import citra from "@/assets/about-us/citra.png";
-import samuel from "@/assets/about-us/samuel.png";
-
-const data = [
-  {
-    name: "Dwi Oktorianto R., S.H., M.Kn., CRA. CTL. CM.",
-    level: "Managing Partner",
-    image: okto,
-  },
-  {
-    name: "Citra Solvia Hadi Meilia, S.H., M.H",
-    level: "Partner",
-    image: citra,
-  },
-  {
-    name: "Samuel Hadi Prabowo, S.H.",
-    level: "Partner",
-    image: samuel,
-  },
-];
+import { aboutData } from "@/data/about.ts";
 ---
 
 <section id="team">
   <div class="container max-w-6xl mx-auto flex flex-col gap-8">
     <div class="flex flex-col gap-4">
-      <h2 class="text-4xl font-medium">Tim Kami</h2>
+      <h2 class="text-4xl font-medium">{aboutData.team.header}</h2>
       <p class="text-base text-secondary">
-        Tim hukum profesional yang berdedikasi untuk melayani kebutuhan hukum
-        Anda dengan integritas dan keahlian yang teruji serta komitmen tinggi
-        terhadap keberhasilan setiap kasus.
+        {aboutData.team.description}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
-        data.map((item) => (
+        aboutData.team.members.map((item) => (
           <div class="flex flex-col gap-4">
             {/* image container */}
             <div class="w-full aspect-square rounded-2xl overflow-hidden">

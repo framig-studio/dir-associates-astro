@@ -3,11 +3,15 @@ import Button from "@/components/ui/Button.astro";
 import aboutUsImage from "@/assets/home-about.png";
 import dir_logo from "@/assets/dir-svg.svg";
 import TextHeader from "@/components/ui/TextHeader.astro";
+import { homeData } from "@/data/home.ts";
 ---
 
 <section id="about-us" class="w-full pt-16 flex justify-center" id="about-us">
   <div class="container flex flex-col gap-8">
-    <TextHeader text="Siapakah" boldText="Kami?" />
+    <TextHeader
+      text={homeData.aboutUs.header.text}
+      boldText={homeData.aboutUs.header.boldText}
+    />
 
     <div
       class="flex flex-col lg:flex-row gap-8 lg:gap-10 justify-between items-center"
@@ -20,39 +24,28 @@ import TextHeader from "@/components/ui/TextHeader.astro";
             loading="lazy"
             class="w-auto h-20 mx-auto lg:mx-0"
           />
-          <h3 class="sm:text-xl font-semibold text-2xl">DIR & Associates</h3>
+          <h3 class="sm:text-xl font-semibold text-2xl">
+            {homeData.aboutUs.companyName}
+          </h3>
           <span
             class="py-1 px-3 rounded-full text-lg inline-block"
             style="background: #0f524416;"
           >
-            Dwi Oktorianto R., S.H., M.Kn., CRA. CTL. CM.
+            {homeData.aboutUs.founderName}
           </span>
         </div>
 
         <div class="text-secondary text-base lg:text-lg space-y-4">
-          <p>
-            Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
-            layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus,
-            Kuasa Hukum Pajak, serta Mediator.
-          </p>
-
-          <p>
-            Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
-            memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
-            hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir
-            sebagai jembatan keadilan bagi setiap klien, memahami kebutuhan yang
-            beragam, dan siap menjadi mitra hukum yang profesional serta dapat
-            diandalkan.
-          </p>
+          {homeData.aboutUs.description.map((paragraph) => <p>{paragraph}</p>)}
         </div>
 
         <div class="mt-6">
           <Button
             variant="primary"
             size="lg"
-            href="/"
+            href={homeData.aboutUs.cta.href}
             class="w-full md:inline-block md:w-fit"
-            >Konsultasikan Sekarang</Button
+            >{homeData.aboutUs.cta.text}</Button
           >
         </div>
       </div>

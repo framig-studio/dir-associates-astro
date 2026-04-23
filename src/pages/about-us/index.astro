@@ -4,6 +4,7 @@ import about_us_vision from "@/assets/about-us-vision.jpg";
 import about_us_mission from "@/assets/about-us-mission.jpg";
 import Button from "@/components/ui/Button.astro";
 import Team from "./team.astro";
+import { aboutData } from "@/data/about.ts";
 
 const seo = {
   title: "Tentang Kami",
@@ -14,25 +15,6 @@ const seo = {
   type: "website",
   image: "/dir-logo.png",
 };
-
-const data = [
-  {
-    num: "99%",
-    label: "Kepuasan Client",
-  },
-  {
-    num: "100+",
-    label: "Kasus Ditangani",
-  },
-  {
-    num: "9th+",
-    label: "Pengalaman Professional",
-  },
-  {
-    num: "6",
-    label: "Profesional Tim",
-  },
-];
 ---
 
 <Layout title={seo.title} seo={seo}>
@@ -43,18 +25,16 @@ const data = [
     <section id="hero" class="flex items-center gap-12 w-full justify-center">
       <div class="flex flex-col gap-8 max-w-4xl">
         <h1 class="text-5xl font-medium text-center">
-          Mengenal Lebih Jauh Tentang Kami
+          {aboutData.hero.title}
         </h1>
 
         <p class="text-lg text-secondary text-center">
-          Kami adalah firma hukum terpercaya di Surabaya yang menyediakan
-          layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa
-          Hukum Pajak, serta Mediator.
+          {aboutData.hero.description}
         </p>
 
         <div class="flex justify-center gap-4">
-          <Button whatsapp="+62 822-918-789" variant="primary" size="lg">
-            Hubungi Kami
+          <Button href={aboutData.hero.cta.href} variant="primary" size="lg">
+            {aboutData.hero.cta.text}
           </Button>
         </div>
       </div>
@@ -63,17 +43,13 @@ const data = [
     <div class="flex flex-col gap-10">
       <section id="nest" class="container p-10 bg-gray-100 rounded-xl">
         <p class="text-center text-xl">
-          “Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen
-          memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika
-          hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai
-          jembatan keadilan bagi setiap klien, memahami kebutuhan yang beragam,
-          dan siap menjadi mitra hukum yang profesional serta dapat diandalkan.”
+          "{aboutData.quote}"
         </p>
       </section>
 
       <section id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full">
         {
-          data.map((item) => (
+          aboutData.stats.map((item) => (
             <div class="flex flex-col items-center gap-2 p-5 bg-gray-100 rounded-xl">
               <span class="text-4xl font-bold">{item.num}</span>
               <span class="text-base text-secondary">{item.label}</span>
@@ -94,11 +70,11 @@ const data = [
           class="w-full md:w-1/2 h-auto rounded-2xl"
         />
         <div class="flex flex-col gap-5 w-full md:w-1/2">
-          <h3 class="text-3xl md:text-4xl font-medium">Visi Kami</h3>
+          <h3 class="text-3xl md:text-4xl font-medium">
+            {aboutData.visionMission.vision.title}
+          </h3>
           <p class="text-secondary text-base/relaxed">
-            Menjadi mitra yang terpercaya dan terkemuka dalam memberikan layanan
-            hukum yang berkualitas dan inovatif, serta berkontribusi positif
-            dalam mewujudkan keadilan dan kesejahteraan masyarakat.
+            {aboutData.visionMission.vision.description}
           </p>
         </div>
       </div>
@@ -112,25 +88,17 @@ const data = [
           class="w-full md:w-1/2 h-auto rounded-2xl"
         />
         <div class="flex flex-col gap-5 w-full md:w-1/2">
-          <h3 class="text-3xl md:text-4xl font-medium">Misi Kami</h3>
-          <p class="text-secondary text-base/relaxed">
-            <strong>Memberikan pelayanan hukum</strong> yang profesional dan berkualitas
-            tinggi kepada klien kami, dengan memperhatikan nilai-nilai etika dan integritas
-            yang tinggi.
-          </p>
-          <p class="text-secondary text-base/relaxed">
-            <strong>Mengedepankan pendekatan</strong> yang holistik dan solusi yang
-            inovatif dalam menangani setiap permasalahan hukum klien kami.
-          </p>
-          <p class="text-secondary text-base/relaxed">
-            <strong>Membangun hubungan</strong> yang kuat dan saling percaya dengan
-            klien, serta berkomitmen untuk menjaga kerahasiaan informasi yang diberikan.
-          </p>
-          <p class="text-secondary text-base/relaxed">
-            <strong>Terus mengembangkan diri</strong> melalui peningkatan kompetensi
-            dan pengetahuan hukum, sehingga dapat memberikan layanan yang lebih baik
-            kepada klien.
-          </p>
+          <h3 class="text-3xl md:text-4xl font-medium">
+            {aboutData.visionMission.mission.title}
+          </h3>
+          {
+            aboutData.visionMission.mission.items.map((item) => (
+              <p class="text-secondary text-base/relaxed">
+                <strong>{item.split(" ").slice(0, 2).join(" ")}</strong>{" "}
+                {item.split(" ").slice(2).join(" ")}
+              </p>
+            ))
+          }
         </div>
       </div>
     </section>

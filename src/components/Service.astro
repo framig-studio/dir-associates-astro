@@ -2,18 +2,18 @@
 import TextHeader from "@/components/ui/TextHeader.astro";
 import { service } from "@/data/service";
 import law_icon from "@/assets/law-icon.svg";
+import { homeData } from "@/data/home.ts";
 ---
 
 <section class="w-full bg-gray-50 flex justify-center" id="service">
   <div class="container flex flex-col items-center gap-10 py-16">
     <div class="space-y-3">
       <TextHeader
-        text="Solusi Penyelesaian"
-        boldText="Masalah Hukum yang Efisien"
+        text={homeData.service.header.text}
+        boldText={homeData.service.header.boldText}
       />
       <div class="text-secondary text-center">
-        Kami menyediakan berbagai layanan hukum untuk membantu Anda
-        menyelesaikan masalah hukum dengan efisien.
+        {homeData.service.description}
       </div>
     </div>
 

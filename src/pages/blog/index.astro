@@ -3,7 +3,7 @@ import TextHeader from "@/components/ui/TextHeader.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import BlogCard from "@/components/BlogCard.astro";
-import Container from "@/components/ui/Container.astro";
+import { blogData } from "@/data/blog";
 
 const posts = await getCollection("blog");
 ---
@@ -30,14 +30,14 @@ const posts = await getCollection("blog");
         <input
           type="text"
           id="search-input"
-          placeholder="Cari artikel disini"
+          placeholder={blogData.search.placeholder}
           class="border-none outline-none py-3 bg-transparent flex-1 min-w-0"
         />
       </div>
 
       <TextHeader
-        text="Silahkan Membaca"
-        boldText="Artikel Terbaru Dari Kami"
+        text={blogData.header.text}
+        boldText={blogData.header.boldText}
       />
     </div>
 
@@ -50,7 +50,7 @@ const posts = await getCollection("blog");
 
     <div id="no-results" class="container hidden">
       <p class="text-center text-gray-500 py-8">
-        Tidak ada artikel yang ditemukan.
+        {blogData.search.noResults}
       </p>
     </div>
   </div>

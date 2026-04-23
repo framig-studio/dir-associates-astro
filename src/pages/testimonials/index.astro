@@ -2,7 +2,7 @@
 import TextHeader from "../../components/ui/TextHeader.astro";
 import Layout from "../../layouts/Layout.astro";
 import TestimonialCard from "../../components/TestimonialCard.astro";
-import { testimonials } from "../../data/testimonials.ts";
+import { testimonialsData } from "../../data/testimonials.ts";
 ---
 
 <Layout>
@@ -10,11 +10,18 @@ import { testimonials } from "../../data/testimonials.ts";
     class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16"
   >
     <div class="container flex flex-col items-center justify-center gap-8">
-      <TextHeader text="Apa kata mereka" boldText="setelah memakai jasa kami" />
+      <TextHeader
+        text={testimonialsData.header.text}
+        boldText={testimonialsData.header.boldText}
+      />
     </div>
 
     <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {testimonials.map((testimonial) => <TestimonialCard {...testimonial} />)}
+      {
+        testimonialsData.testimonials.map((testimonial) => (
+          <TestimonialCard {...testimonial} />
+        ))
+      }
     </div>
   </div>
 </Layout>

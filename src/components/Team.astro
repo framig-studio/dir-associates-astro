@@ -2,19 +2,23 @@
 import Button from "@/components/ui/Button.astro";
 import TextHeader from "@/components/ui/TextHeader.astro";
 import teamImage from "@/assets/team.png";
+import { homeData } from "@/data/home.ts";
 ---
 
 <section class="w-full flex justify-center" id="team">
   <div class="container flex flex-col items-center gap-10 py-16 pb-0">
     <div class="space-y-3">
-      <TextHeader text="Mari Bertemu" boldText="Tim Professional Dari Kami" />
+      <TextHeader
+        text={homeData.team.header.text}
+        boldText={homeData.team.header.boldText}
+      />
       <div class="text-secondary text-center text-base">
-        Layanan kami 24/7 hanya untuk membantu memberikan solusi untuk anda
+        {homeData.team.description}
       </div>
     </div>
 
-    <Button whatsapp="+62 822-918-789" variant="primary" size="lg">
-      Hubungi Kami
+    <Button href={homeData.team.cta.href} variant="primary" size="lg">
+      {homeData.team.cta.text}
     </Button>
 
     <img src={teamImage.src} alt="Team" class="w-full max-w-2xl h-auto" />
