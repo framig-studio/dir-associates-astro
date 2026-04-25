@@ -1,6 +1,9 @@
 import okto from "@/assets/about-us/okto.png";
 import citra from "@/assets/about-us/citra.png";
 import samuel from "@/assets/about-us/samuel.png";
+import eva from "@/assets/about-us/eva.png";
+import tyas from "@/assets/about-us/tyas.png";
+
 import { waUrl } from "./global";
 import type { CTA, TrustStat } from "@/types";
 
@@ -57,6 +60,16 @@ export const aboutData = {
         name: "Samuel Hadi Prabowo, S.H.",
         level: "Partner",
         image: samuel,
+      },
+      {
+        name: "Intan Ekaningtyas, S.H.",
+        level: "Public Relation for Legal Corporate",
+        image: tyas,
+      },
+      {
+        name: "Eva Julihastuty, S.E.",
+        level: "Tax Consultant",
+        image: eva,
       },
     ],
   },
