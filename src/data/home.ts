@@ -84,7 +84,7 @@ export const homeData = {
   team: {
     header: {
       text: "Mari Bertemu",
-      boldText: "Tim Professional Dari Kami",
+      boldText: "Tim Profesional Dari Kami",
     } as Header,
     description:
       "Layanan kami 24/7 hanya untuk membantu memberikan solusi untuk anda.",
