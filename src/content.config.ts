@@ -16,6 +16,7 @@ const blog = defineCollection({
     slug: z.string(),
     publish_date: z.string(),
     image: z.string(),
+    seo_keywords: z.string().optional(),
     nextArticle: z
       .object({
         title: z.string(),

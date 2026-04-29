@@ -63,7 +63,7 @@ const structuredData = {
     "@id": `https://dir-associates.com/blog/${post.data.slug}`,
   },
   articleSection: "Hukum",
-  keywords: `${post.data.title}, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
+  keywords: `${(post.data as any).seo_keywords || post.data.title}, pengacara kepailitan dan pkpu terpercaya, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
   wordCount: wordCount,
   timeRequired: `PT${readingTime}M`,
 };
@@ -78,7 +78,7 @@ const structuredData = {
     description: post.data.description,
     image: post.data.image,
     publishDate: post.data.publish_date,
-    keywords: `${post.data.title}, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
+    keywords: `${(post.data as any).seo_keywords}, pengacara kepailitan dan pkpu terpercaya, hukum, advokat, kurator dan pengurus, PKPU, pengacara pajak, surabaya, DIR & Associates, artikel hukum`,
     author: "DIR & Associates",
     section: "Blog",
     type: "article",
