@@ -3,7 +3,7 @@ import type { CTA, Header, TrustStat } from "@/types";
 
 const sliders = [
   {
-    header: "Solusi Hukum Terpercaya untuk Perusahaan & Individu",
+    header: "Solusi Hukum Terpercaya Untuk Perusahaan & Individu",
     sub_header:
       "Kami membantu Anda menyelesaikan permasalahan hukum dengan pendekatan strategis, terukur, dan berintegritas tinggi.",
     cta: "Konsultasi Gratis Sekarang",
