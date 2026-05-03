@@ -5,6 +5,15 @@ import Footer from "./Footer.astro";
 import SEOMetaTags from "@/components/SEOMetaTags.astro";
 import Analytics from "@vercel/analytics/astro";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp.astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+
+// Type declarations for Google Analytics
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
 
 const {
   title = "DIR & Associates - Advokat, Kurator & Pengurus, Pengacara Pajak prestisius.",
@@ -34,6 +43,19 @@ const {
     </main>
     <Footer />
     <Analytics />
+    <SpeedInsights />
     <FloatingWhatsApp />
   </body>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-324456791"
+  ></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-324456791");
+  </script>
 </html>
