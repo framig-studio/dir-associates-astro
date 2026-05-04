@@ -34,16 +34,19 @@ const menus = [
   // Navigation functionality
   document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.getElementById("navbar");
-    const navLinks = document.querySelectorAll(".nav-link");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
     // Add shadow on scroll
     const addShadowOnScroll = () => {
       if (navbar && window.scrollY > 10) {
-        navbar.classList.add("shadow-md");
+        navbar.classList.remove("h-22");
+        navbar.classList.add("bg-gray-100/50");
+        navbar.classList.add("h-18");
       } else if (navbar) {
-        navbar.classList.remove("shadow-md");
+        navbar.classList.remove("bg-gray-100/50");
+        navbar.classList.remove("h-18");
+        navbar.classList.add("h-22");
       }
     };
 
@@ -66,55 +69,20 @@ const menus = [
         });
       });
     }
-
-    // Smooth scroll for hash links
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-        if (href?.includes("#") && window.location.pathname === "/") {
-          e.preventDefault();
-          const targetId = href.substring(href.lastIndexOf("#") + 1);
-          const target = document.getElementById(targetId);
-
-          if (target && navbar) {
-            const offset = navbar.offsetHeight;
-            window.scrollTo({
-              top: target.offsetTop - offset,
-              behavior: "smooth",
-            });
-            history.pushState(null, "", href);
-          }
-        }
-      });
-    });
-
-    // Handle initial hash
-    if (window.location.hash) {
-      const targetId = window.location.hash.substring(1);
-      const target = document.getElementById(targetId);
-      if (target && navbar) {
-        setTimeout(() => {
-          window.scrollTo({
-            top: target.offsetTop - navbar.offsetHeight,
-            behavior: "smooth",
-          });
-        }, 100);
-      }
-    }
   });
 </script>
 
 <header>
   <nav
-    class="bg-white/80 backdrop-blur-3xl fixed top-0 w-full z-50 outline-none"
+    class="bg-gray-50 backdrop-blur-3xl fixed top-0 w-full z-50 outline-none h-22 flex items-center transition-all duration-300 ease-in-out"
     id="navbar"
   >
     <div class="container mx-auto">
       <div
-        class="flex items-center justify-between h-20 transition-all duration-300"
+        class="flex items-center justify-between transition-all duration-300"
         id="navbar-inner"
       >
-        <div class="logo flex gap-5 items-center">
+        <a class="logo flex gap-3 items-center" href="/">
           <img
             src={dir_logo_b.src}
             alt="DIR & Associates"
@@ -123,10 +91,10 @@ const menus = [
           />
           <span
             id="brand"
-            class="font-semibold text-xl transition-all duration-300"
+            class="font-semibold text-lg transition-all duration-300"
             >DIR & ASSOCIATES</span
           >
-        </div>
+        </a>
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex menu">

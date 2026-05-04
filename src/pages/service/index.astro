@@ -5,13 +5,14 @@ import FAQ from "@/components/FAQ.astro";
 import TestimonialSection from "@/components/TestimonialSection.astro";
 import Rating from "@/components/Rating.astro";
 import { serviceData } from "@/data/service";
+import Service from "@/pages/service/service.astro";
 
 const seo = {
   title: "Layanan",
   description:
     "DIR & Associates adalah firma hukum terpercaya di Surabaya yang menyediakan layanan advokat, kurator & pengurus, pengacara pajak, dan mediator untuk perusahaan dan individu di seluruh Indonesia.",
   keywords:
-    "advokat surabaya terpercaya 2024, konsultan hukum surabaya, kurator pengurus profesional, pengacara kepailitan surabaya, firma hukum terbaik surabaya, layanan hukum lengkap, mediator bersertifikat, PKPU penundaan utang, konsultasi hukum online, DIR & Associates, Dwi Oktorianto, jasa hukum perusahaan",
+    "pengacara kepailitan dan pkpu di indonesia, kurator pengurus profesional, firma hukum terbaik di Indonesia, layanan hukum berintegritas, mediator bersertifikat nasional, PKPU penundaan utang, konsultasi hukum online, DIR & Associates, Dwi Oktorianto, jasa hukum perusahaan",
   type: "website",
   image: "/dir-logo.png",
 };
@@ -40,6 +41,8 @@ const seo = {
 
     <Rating />
   </div>
+
+  <Service />
 
   <FAQ />
   <TestimonialSection />

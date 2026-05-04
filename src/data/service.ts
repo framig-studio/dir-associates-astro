@@ -11,6 +11,12 @@ export const serviceData = {
       href: waUrl,
     } as CTA,
   },
+  servicesHeader: {
+    text: "Layanan",
+    boldText: "Hukum",
+    description:
+      "Layanan hukum yang kami tawarkan mencakup berbagai aspek hukum untuk membantu Anda menyelesaikan masalah hukum dengan efisien.",
+  },
   services: [
     {
       title: "Kepailitan",

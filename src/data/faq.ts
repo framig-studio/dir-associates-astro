@@ -8,7 +8,7 @@ export const faqData = {
     {
       question: "Apa saja layanan hukum yang tersedia di DIR & Associates?",
       answer:
-        "Kami menyediakan berbagai layanan hukum termasuk Advokat dan Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, Mediator, Penyelesaian sengketa bisnis, Hukum Properti, Hukum Perusahaan, Hukum Waris, Hukum Perdata, dan Hukum Pidana.",
+        "Kami menyediakan berbagai layanan hukum termasuk Advokat dan Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, Mediator, Penyelesaian Sengketa Bisnis, Hukum Properti, Hukum Perusahaan, Hukum Waris, Hukum Perdata, dan Hukum Pidana.",
     },
     {
       question: "Bagaimana cara memulai konsultasi hukum?",
