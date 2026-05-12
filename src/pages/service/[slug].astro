@@ -1,0 +1,111 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import TextHeader from "@/components/ui/TextHeader.astro";
+import { serviceData } from "@/data/service";
+import { waUrl } from "@/data/global";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const services = await getCollection("service");
+  return services.map((service) => ({
+    params: { slug: service.data.title.toLowerCase().replace(/\s+/g, "-") },
+    props: { service },
+  }));
+}
+
+type Props = {
+  service: any;
+};
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+
+// Read markdown content for this service
+
+let serviceMeta = {
+  title: service.title,
+  description: service.desc,
+  keywords: service.keywords,
+};
+---
+
+<Layout
+  title={service.data.title}
+  description={service.data.description}
+  seo={serviceMeta}
+>
+  <section class="w-full flex justify-center py-32 md:py-20 lg:py-36">
+    <div class="container flex flex-col items-center gap-8 md:gap-10 px-4">
+      <div class="space-y-3 text-center w-full">
+        <TextHeader text="Layanan" boldText={service.data.title} />
+        <div class="text-secondary text-lg max-w-3xl mx-auto">
+          {service.data.description}
+        </div>
+      </div>
+
+      <div
+        class="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12"
+      >
+        <div
+          class="service-content text-gray-800 leading-relaxed flex flex-col gap-4"
+        >
+          <Content />
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <div
+            class="bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl p-6 md:p-8"
+          >
+            <div class="text-center">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                Butuh Konsultasi Hukum Profesional?
+              </h3>
+              <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Tim advokat kami siap membantu Anda dengan solusi hukum yang
+                tepat untuk kebutuhan bisnis dan personal Anda.
+              </p>
+              <a
+                href={waUrl}
+                class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 11 5.5 12 7l1-1.5L15.5 8zm-6.5 6L12 13.5l3.5 2.5L13 18.5l-1-1-1 1L9 14z"
+                  ></path>
+                </svg>
+                Konsultasi Sekarang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Services -->
+      <div class="w-full">
+        <h2 class="text-2xl font-bold text-center mb-8">Layanan Lainnya</h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+        >
+          {
+            serviceData.services
+              .filter((s) => s.title !== service.data.title)
+              .map((related) => (
+                <a
+                  href={`/service/${related.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  class=" p-4 md:p-6 rounded-2xl bg-gray-50 hover:shadow-lg transition-shadow block"
+                >
+                  <h3 class="text-lg font-semibold mb-2">{related.title}</h3>
+                  <p class="text-secondary line-clamp-3">{related.desc}</p>
+                </a>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -26,5 +26,14 @@ const blog = defineCollection({
   }),
 });
 
+const service = defineCollection({
+  loader: glob({ base: "./src/data/service", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    keywords: z.array(z.string()),
+  }),
+});
+
 // 5. Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { blog, service };

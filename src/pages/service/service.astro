@@ -26,6 +26,13 @@ import law_icon from "@/assets/law-icon.svg";
             </div>
 
             <p class="text-secondary">{item.desc}</p>
+
+            <a
+              href={`/service/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+              class="text-primary font-semibold"
+            >
+              Selengkapnya
+            </a>
           </div>
         ))
       }
