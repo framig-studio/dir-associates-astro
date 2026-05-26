@@ -9,7 +9,8 @@ import type { CTA, TrustStat } from "@/types";
 
 export const aboutData = {
   hero: {
-    title: "Mengenal Lebih Jauh Tentang Kami",
+    title:
+      "Mengenal Lebih Jauh Tentang Kami, Pengacara dan Advokat Terpercaya di Surabaya",
     description:
       "Kami adalah firma hukum terpercaya di Surabaya yang menyediakan layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, serta Mediator.",
     cta: {

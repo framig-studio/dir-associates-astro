@@ -1,7 +1,14 @@
 ---
 title: "Kepailitan"
 description: "Penilaian keuangan, restrukturisasi, negosiasi dengan kreditor, perlindungan hukum, pemantauan aset, pemilihan jenis kebangkrutan, dan pembimbingan selama proses kebangkrutan."
-keywords: ["pengacara kepailitan", "kurator profesional", "kebangkrutan"]
+keywords:
+  [
+    "lawyer PKPU Indonesia",
+    "advokat kepailitan",
+    "jasa hukum restrukturisasi utang",
+    "pengacara sengketa kreditur",
+    "corporate insolvency Indonesia",
+  ]
 ---
 
 # Layanan Kepailitan
