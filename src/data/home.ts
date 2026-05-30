@@ -5,7 +5,7 @@ const sliders = [
   {
     header: "Solusi Hukum Terpercaya Untuk Perusahaan & Individu",
     sub_header:
-      "Kami membantu Anda menyelesaikan permasalahan hukum dengan pendekatan strategis, terukur, dan berintegritas tinggi.",
+      "Mencari pengacara Surabaya terbaik untuk menangani permasalahan hukum Anda? Kami hadir memberikan layanan hukum profesional, responsif, dan terpercaya untuk kebutuhan pribadi maupun perusahaan.",
     cta: "Konsultasi Gratis Sekarang",
     href: "https://wa.me/62822918789",
   },
@@ -61,6 +61,7 @@ export const homeData = {
     description: [
       "Kami adalah firma hukum terpercaya di Surabaya yang menyediakan layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, serta Mediator.",
       "Dengan pengalaman luas dan dedikasi tinggi, kami berkomitmen memberikan pelayanan hukum berkualitas, menjunjung nilai dan etika hukum, serta patuh terhadap peraturan yang berlaku. Kami hadir sebagai jembatan keadilan bagi setiap klien, memahami kebutuhan yang beragam, dan siap menjadi mitra hukum yang profesional serta dapat diandalkan.",
+      "Didukung oleh tim pengacara Surabaya terpercaya dan advokat berpengalaman, kami membantu berbagai perkara litigasi maupun non litigasi dengan pendekatan yang strategis dan berorientasi solusi.",
     ],
     cta: {
       text: "Konsultasikan Sekarang",

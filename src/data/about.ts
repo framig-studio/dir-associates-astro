@@ -10,9 +10,9 @@ import type { CTA, TrustStat } from "@/types";
 export const aboutData = {
   hero: {
     title:
-      "Mengenal Lebih Jauh Tentang Kami, Pengacara dan Advokat Terpercaya di Surabaya",
+      "Advokat Surabaya terbaik yang berkomitmen memberikan layanan hukum profesional, transparan, dan berorientasi pada kepentingan klien.",
     description:
-      "Kami adalah firma hukum terpercaya di Surabaya yang menyediakan layanan sebagai Advokat, Konsultan Hukum, Kurator dan Pengurus, Kuasa Hukum Pajak, serta Mediator.",
+      "Dengan pengalaman menangani berbagai perkara hukum di Surabaya dan sekitarnya, kami dipercaya oleh klien individu maupun perusahaan sebagai pengacara Surabaya terpercaya untuk mendampingi proses hukum secara optimal.",
     cta: {
       text: "Hubungi Kami",
       href: waUrl,
