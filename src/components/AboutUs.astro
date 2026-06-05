@@ -6,7 +6,7 @@ import TextHeader from "@/components/ui/TextHeader.astro";
 import { homeData } from "@/data/home.ts";
 ---
 
-<section id="about-us" class="w-full pt-16 flex justify-center" id="about-us">
+<section id="about-us" class="w-full p-16 flex justify-center" id="about-us">
   <div class="container flex flex-col gap-8">
     <TextHeader
       text={homeData.aboutUs.header.text}
@@ -54,7 +54,7 @@ import { homeData } from "@/data/home.ts";
         <img
           src={aboutUsImage.src}
           alt="About Us"
-          class="w-full max-w-md lg:max-w-lg h-auto"
+          class="w-full max-w-md lg:max-w-lg h-auto rounded-2xl"
           loading="lazy"
         />
       </div>
