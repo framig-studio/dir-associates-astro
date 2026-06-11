@@ -1,0 +1,89 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import facility1 from "@/assets/facility/img-1.jpeg";
+import facility2 from "@/assets/facility/img-2.jpeg";
+
+const seo = {
+  title: "Fasilitas",
+  description:
+    "Fasilitas kantor DIR & Associates yang modern dan profesional di Surabaya, termasuk ruang meeting dan ruang konsultasi untuk klien.",
+  keywords:
+    "fasilitas kantor pengacara surabaya, ruang meeting pengacara, ruang konsultasi hukum, kantor law firm surabaya",
+  type: "website",
+  image: "/dir-logo.png",
+};
+---
+
+<Layout title={seo.title} seo={seo}>
+  <div
+    class="container flex flex-col items-center mx-auto my-6 gap-20"
+    style="margin-top: 100px;"
+  >
+    <section id="hero" class="flex items-center gap-12 w-full justify-center">
+      <div class="flex flex-col gap-8 max-w-4xl">
+        <h1 class="text-4xl font-medium text-center">Fasilitas Kami</h1>
+        <p class="text-lg text-secondary text-center">
+          DIR & Associates menyediakan fasilitas ruang meeting dan konsultasi
+          yang dirancang untuk memberikan kenyamanan dan profesionalisme bagi
+          setiap klien.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="max-w-6xl mx-auto flex flex-col gap-12 md:gap-20 my-16"
+    >
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+        <img
+          src={facility1.src}
+          alt="Ruang Meeting DIR & Associates"
+          class="w-full md:w-1/2 h-auto rounded-2xl filter saturate-90"
+        />
+        <div class="flex flex-col gap-5 w-full md:w-1/2">
+          <h3 class="text-3xl md:text-4xl font-medium">
+            Ruang Meeting Profesional
+          </h3>
+          <p class="text-secondary text-base/relaxed">
+            Ruang meeting kami dirancang untuk menunjang diskusi hukum yang
+            produktif dan nyaman. Dilengkapi dengan meja rapat eksekutif,
+            kursi ergonomis, serta sistem pencahayaan yang optimal untuk
+            menciptakan suasana profesional dan kondusif bagi setiap
+            pertemuan dengan klien.
+          </p>
+          <p class="text-secondary text-base/relaxed">
+            Setiap ruang meeting juga dilengkapi dengan perangkat presentasi
+            modern dan koneksi internet berkecepatan tinggi untuk mendukung
+            kebutuhan konsultasi hukum Anda secara menyeluruh.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16"
+      >
+        <img
+          src={facility2.src}
+          alt="Ruang Konsultasi DIR & Associates"
+          class="w-full md:w-1/2 h-auto rounded-2xl filter saturate-90"
+        />
+        <div class="flex flex-col gap-5 w-full md:w-1/2">
+          <h3 class="text-3xl md:text-4xl font-medium">
+            Ruang Konsultasi Eksklusif
+          </h3>
+          <p class="text-secondary text-base/relaxed">
+            Ruang konsultasi eksklusif kami memberikan privasi dan kenyamanan
+            maksimal bagi klien yang membutuhkan diskusi hukum secara
+            mendalam dan konfidensial. Suasana ruangan yang tenang dan
+            elegan mendukung komunikasi yang efektif antara advokat dan
+            klien.
+          </p>
+          <p class="text-secondary text-base/relaxed">
+            Dengan desain interior yang hangat dan profesional, ruang
+            konsultasi ini menjadi tempat yang ideal untuk membahas perkara
+            hukum Anda dengan tim advokat berpengalaman kami.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
