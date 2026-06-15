@@ -5,6 +5,16 @@ import { getCollection } from "astro:content";
 import BlogCard from "@/components/BlogCard.astro";
 import { blogData } from "@/data/blog";
 
+const seo = {
+  title: "Blog",
+  description:
+    "Baca artikel hukum terbaru dari DIR & Associates - informasi tentang kepailitan, PKPU, hukum bisnis, perpajakan, dan berbagai topik hukum lainnya.",
+  keywords:
+    "artikel hukum, blog hukum, informasi hukum, berita hukum, kepailitan, pkpu, hukum bisnis, perpajakan, advokat surabaya",
+  type: "website",
+  image: "/dir-logo.png",
+};
+
 const posts = (await getCollection("blog")).sort(
   (a, b) =>
     new Date(b.data.publish_date).getTime() -
@@ -12,7 +22,7 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Layout>
+<Layout title={seo.title} seo={seo}>
   <div
     class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16"
   >

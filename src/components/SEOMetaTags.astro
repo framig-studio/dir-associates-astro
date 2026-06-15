@@ -23,7 +23,7 @@ const {
   locale = "id_ID",
 } = Astro.props;
 
-const currentUrl = Astro.url.href;
+const currentUrl = Astro.url.origin + Astro.url.pathname;
 const imageUrl = image ? new URL(image, Astro.url.origin).href : null;
 const publishedTime = publishDate ? new Date(publishDate).toISOString() : null;
 ---

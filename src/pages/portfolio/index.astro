@@ -4,6 +4,16 @@ import Layout from "@/layouts/Layout.astro";
 import PortfolioCard from "@/components/PortfolioCard.astro";
 
 // Gallery path variable
+const seo = {
+  title: "Portofolio",
+  description:
+    "Lihat portofolio unggulan DIR & Associates - firma hukum terpercaya di Surabaya dengan berbagai kasus hukum yang telah berhasil ditangani.",
+  keywords:
+    "portofolio pengacara, kasus hukum surabaya, firma hukum terpercaya, advokat profesional, DIR & Associates portofolio",
+  type: "website",
+  image: "/dir-logo.png",
+};
+
 const galleryPath = "/gallery";
 
 // Portfolio data - using gallery assets
@@ -32,7 +42,7 @@ const portfolioItems = [
 ];
 ---
 
-<Layout>
+<Layout title={seo.title} seo={seo}>
   <div
     class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16 mb-20"
   >

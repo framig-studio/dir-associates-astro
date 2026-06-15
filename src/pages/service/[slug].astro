@@ -21,7 +21,53 @@ type Props = {
 const { service } = Astro.props;
 const { Content } = await render(service);
 
-// Read markdown content for this service
+// Calculate word count for reading time
+const wordCount = (service.body || "").split(/\s+/).length;
+
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: service.data.title,
+      description: service.data.description,
+      provider: {
+        "@type": "Organization",
+        name: "DIR & Associates",
+        url: "https://dirassociates.com",
+      },
+      serviceType: service.data.title,
+      areaServed: "Indonesia",
+      availableChannel: {
+        "@type": "ServiceChannel",
+        serviceUrl: `https://dirassociates.com/service/${service.data.title.toLowerCase().replace(/\s+/g, "-")}`,
+      },
+    },
+    {
+      "@type": "Organization",
+      name: "DIR & Associates",
+      url: "https://dirassociates.com",
+      description:
+        "Firma hukum terpercaya di Surabaya yang menyediakan layanan advokat, kurator, pengurus, dan konsultan hukum pajak.",
+      foundingDate: "2016",
+      founder: {
+        "@type": "Person",
+        name: "Dwi Oktorianto R., S.H., M.Kn., CRA. CTL. CM.",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Surabaya",
+        addressCountry: "Indonesia",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+62-822-918-789",
+        contactType: "customer service",
+      },
+      sameAs: ["https://dirassociates.com"],
+    },
+  ],
+};
 
 let serviceMeta = {
   title: service.title,
@@ -109,3 +155,5 @@ let serviceMeta = {
     </div>
   </section>
 </Layout>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(serviceStructuredData)}></script>

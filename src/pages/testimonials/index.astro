@@ -3,9 +3,19 @@ import TextHeader from "../../components/ui/TextHeader.astro";
 import Layout from "../../layouts/Layout.astro";
 import TestimonialCard from "../../components/TestimonialCard.astro";
 import { testimonialsData } from "../../data/testimonials.ts";
+
+const seo = {
+  title: "Testimonial",
+  description:
+    "Lihat testimonial klien DIR & Associates - pengacara dan advokat terpercaya di Surabaya yang telah membantu banyak klien menyelesaikan masalah hukum.",
+  keywords:
+    "testimonial pengacara, review advokat, pengacara terpercaya surabaya, klien puas, DIR & Associates testimonial",
+  type: "website",
+  image: "/dir-logo.png",
+};
 ---
 
-<Layout>
+<Layout title={seo.title} seo={seo}>
   <div
     class="w-full flex flex-col items-center justify-center py-16 gap-16 mt-16"
   >
