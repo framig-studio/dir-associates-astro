@@ -3,7 +3,8 @@ import type { CTA } from "@/types";
 
 export const serviceData = {
   hero: {
-    title: "Solusi Penyelesaian Masalah Hukum yang Efisien",
+    title:
+      "Pengacara Terbaik Dengan Solusi Penyelesaian Masalah Hukum yang Efisien",
     description:
       "Kami menyediakan berbagai layanan hukum untuk membantu Anda menyelesaikan masalah hukum dengan efisien.",
     cta: {
